@@ -72,7 +72,8 @@ const std::vector<SampleDTO> SampleService::getSampleListInfoFromJson()
     // picojsonでパース
     picojson::parse(v, json, json + size, &err);
 
-    if (!err.empty()) {
+    if (!err.empty())
+    {
         // パース失敗した場合は、空リストデータを返す
         return list;
     }
@@ -82,7 +83,8 @@ const std::vector<SampleDTO> SampleService::getSampleListInfoFromJson()
 
     picojson::array& array = root["array"].get<picojson::array>();
 
-    for (auto o : array) {
+    for (auto o : array)
+    {
         picojson::object& info = o.get<picojson::object>();
         picojson::object& data = info["data"].get<picojson::object>();
 
@@ -90,9 +92,9 @@ const std::vector<SampleDTO> SampleService::getSampleListInfoFromJson()
         dto.idx            = static_cast<int>(info["idx"].get<double>());
         dto.listItemHeight = static_cast<float>(data["listItemHeight"].get<double>());
         dto.title          = data["title"].get<std::string>();
-        
+
         list.push_back(dto);
     }
-    
+
     return list;
 }

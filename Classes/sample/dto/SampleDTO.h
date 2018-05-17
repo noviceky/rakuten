@@ -15,12 +15,12 @@ struct SampleDTO
      *  @brief index
      */
     int idx;
-    
+
     /**
      *  @brief リストアイテム高さ
      */
     float listItemHeight;
-    
+
     /**
      *  @brief タイトル
      */

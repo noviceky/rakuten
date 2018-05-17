@@ -12,8 +12,8 @@
 #include "cocos2d.h"
 
 #define WINSIZE Director::getInstance()->getWinSize()
-#define WINCENTER  Point(WINSIZE.width * 0.5, WINSIZE.height * 0.5)
-#define WIN_WIDTH  Director::getInstance()->getWinSize().width
+#define WINCENTER Point(WINSIZE.width * 0.5, WINSIZE.height * 0.5)
+#define WIN_WIDTH Director::getInstance()->getWinSize().width
 #define WIN_HEIGHT Director::getInstance()->getWinSize().height
 #define MAIN_VIEW_WIDTH 640
 #define MAIN_VIEW_HEIGHT 1136
@@ -23,27 +23,27 @@
 
 // デバック機能
 #if DEBUG
- #define DEBUG_MENU_ENABLE  (1)
+#define DEBUG_MENU_ENABLE (1)
 #else
- #define DEBUG_MENU_ENABLE  (0)
+#define DEBUG_MENU_ENABLE (0)
 #endif
 
 // ログ
 #if DEBUG
- #define LOG(format, ...) cocos2d::log(format,##__VA_ARGS__)
+#define LOG(format, ...) cocos2d::log(format, ##__VA_ARGS__)
 #else
- #define LOG(format, ...)
+#define LOG(format, ...)
 #endif
 
 // トレースログ
-#define TRACE LOG("TRACE[%s][L:%d]",__PRETTY_FUNCTION__,__LINE__)
+#define TRACE LOG("TRACE[%s][L:%d]", __PRETTY_FUNCTION__, __LINE__)
 
 // デバックトレースログ（処理速度計測用）
 #define DEBUG_TRACE DEBUG_TRACE_LOG trace(__PRETTY_FUNCTION__);
 
 class DEBUG_TRACE_LOG
 {
-public:
+  public:
     DEBUG_TRACE_LOG(const std::string& msg)
     {
         _msg        = msg;
@@ -53,19 +53,17 @@ public:
 
     virtual ~DEBUG_TRACE_LOG()
     {
-        _endClock = std::chrono::system_clock::now();
+        _endClock      = std::chrono::system_clock::now();
         double elapsed = std::chrono::duration_cast<std::chrono::microseconds>(_endClock - _startClock).count();
         elapsed *= 0.001;
         LOG("DEBUG_TRACE[%s][%.3fmsec] <---", _msg.c_str(), elapsed);
     };
 
-private:
+  private:
     std::string                           _msg;
     std::chrono::system_clock::time_point _startClock;
     std::chrono::system_clock::time_point _endClock;
-    DEBUG_TRACE_LOG()
-    {
-    };
+    DEBUG_TRACE_LOG(){};
 };
 
 #endif /* defined(__rakuran__AppMacro__) */

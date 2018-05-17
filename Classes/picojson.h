@@ -73,10 +73,10 @@ extern "C" {
 #endif
 
 #ifndef PICOJSON_ASSERT
-#define PICOJSON_ASSERT(e)                \
-    do                                    \
-    {                                     \
-        if (!(e))                         \
+#define PICOJSON_ASSERT(e) \
+    do \
+    { \
+        if (!(e)) \
             throw std::runtime_error(#e); \
     } while (0)
 #endif
@@ -118,7 +118,7 @@ struct null
 
 class value
 {
-public:
+  public:
     typedef std::vector<value>           array;
     typedef std::map<std::string, value> object;
     union _storage
@@ -133,11 +133,11 @@ public:
         object*      object_;
     };
 
-protected:
+  protected:
     int      type_;
     _storage u_;
 
-public:
+  public:
     value();
     value(int type, bool);
     explicit value(bool b);
@@ -173,7 +173,7 @@ public:
     void        serialize(Iter os, bool prettify = false) const;
     std::string serialize(bool prettify = false) const;
 
-private:
+  private:
     template<typename T>
     value(const T*);  // intentionally defined to block implicit conversion of pointer to bool
     template<typename Iter>
@@ -197,8 +197,8 @@ inline value::value(int type, bool)
     switch (type)
     {
 #define INIT(p, v) \
-    case p##type:  \
-        u_.p = v;  \
+    case p##type: \
+        u_.p = v; \
         break
         INIT(boolean_, false);
         INIT(number_, 0.0);
@@ -280,8 +280,8 @@ inline value::~value()
 {
     switch (type_)
     {
-#define DEINIT(p)    \
-    case p##type:    \
+#define DEINIT(p) \
+    case p##type: \
         delete u_.p; \
         break
         DEINIT(string_);
@@ -299,8 +299,8 @@ inline value::value(const value& x)
     switch (type_)
     {
 #define INIT(p, v) \
-    case p##type:  \
-        u_.p = v;  \
+    case p##type: \
+        u_.p = v; \
         break
         INIT(string_, new std::string(*x.u_.string_));
         INIT(array_, new array(*x.u_.array_));
@@ -328,11 +328,11 @@ inline void value::swap(value& x)
     std::swap(u_, x.u_);
 }
 
-#define IS(ctype, jtype)                 \
-    template<>                           \
+#define IS(ctype, jtype) \
+    template<> \
     inline bool value::is<ctype>() const \
-    {                                    \
-        return type_ == jtype##_type;    \
+    { \
+        return type_ == jtype##_type; \
     }
 IS(null, null)
 IS(bool, boolean)
@@ -353,18 +353,18 @@ inline bool value::is<double>() const
         ;
 }
 
-#define GET(ctype, var)                                                                      \
-    template<>                                                                               \
-    inline const ctype& value::get<ctype>() const                                            \
-    {                                                                                        \
+#define GET(ctype, var) \
+    template<> \
+    inline const ctype& value::get<ctype>() const \
+    { \
         PICOJSON_ASSERT("type mismatch! call is<type>() before get<type>()" && is<ctype>()); \
-        return var;                                                                          \
-    }                                                                                        \
-    template<>                                                                               \
-    inline ctype& value::get<ctype>()                                                        \
-    {                                                                                        \
+        return var; \
+    } \
+    template<> \
+    inline ctype& value::get<ctype>() \
+    { \
         PICOJSON_ASSERT("type mismatch! call is<type>() before get<type>()" && is<ctype>()); \
-        return var;                                                                          \
+        return var; \
     }
 GET(bool, u_.boolean_)
 GET(std::string, *u_.string_)
@@ -372,7 +372,9 @@ GET(array, *u_.array_)
 GET(object, *u_.object_)
 #ifdef PICOJSON_USE_INT64
 GET(double,
-    (type_ == int64_type && (const_cast<value*>(this)->type_ = number_type, const_cast<value*>(this)->u_.number_ = u_.int64_), u_.number_))
+    (type_ == int64_type
+            && (const_cast<value*>(this)->type_ = number_type, const_cast<value*>(this)->u_.number_ = u_.int64_),
+        u_.number_))
 GET(int64_t, u_.int64_)
 #else
 GET(double, u_.number_)
@@ -459,7 +461,8 @@ inline std::string value::to_str() const
         {
             char   buf[256];
             double tmp;
-            SNPRINTF(buf, sizeof(buf), fabs(u_.number_) < (1ULL << 53) && modf(u_.number_, &tmp) == 0 ? "%.f" : "%.17g", u_.number_);
+            SNPRINTF(buf, sizeof(buf), fabs(u_.number_) < (1ULL << 53) && modf(u_.number_, &tmp) == 0 ? "%.f" : "%.17g",
+                u_.number_);
 #if PICOJSON_USE_LOCALE
             char* decimal_point = localeconv()->decimal_point;
             if (strcmp(decimal_point, ".") != 0)
@@ -505,8 +508,8 @@ void serialize_str(const std::string& s, Iter oi)
     {
         switch (*i)
         {
-#define MAP(val, sym)  \
-    case val:          \
+#define MAP(val, sym) \
+    case val: \
         copy(sym, oi); \
         break
             MAP('"', "\\\"");
@@ -650,13 +653,13 @@ inline std::string value::_serialize(int indent) const
 template<typename Iter>
 class input
 {
-protected:
+  protected:
     Iter cur_, end_;
     int  last_ch_;
     bool ungot_;
     int  line_;
 
-public:
+  public:
     input(const Iter& first, const Iter& last)
         : cur_(first)
         , end_(last)
@@ -849,8 +852,8 @@ inline bool _parse_string(String& out, input<Iter>& in)
             }
             switch (ch)
             {
-#define MAP(sym, val)       \
-    case sym:               \
+#define MAP(sym, val) \
+    case sym: \
         out.push_back(val); \
         break
                 MAP('"', '\"');
@@ -964,15 +967,15 @@ inline bool _parse(Context& ctx, input<Iter>& in)
     int ch = in.getc();
     switch (ch)
     {
-#define IS(ch, text, op)          \
-    case ch:                      \
+#define IS(ch, text, op) \
+    case ch: \
         if (in.match(text) && op) \
-        {                         \
-            return true;          \
-        }                         \
-        else                      \
-        {                         \
-            return false;         \
+        { \
+            return true; \
+        } \
+        else \
+        { \
+            return false; \
         }
         IS('n', "ull", ctx.set_null());
         IS('f', "alse", ctx.set_bool(false));
@@ -999,8 +1002,8 @@ inline bool _parse(Context& ctx, input<Iter>& in)
                 {
                     errno         = 0;
                     intmax_t ival = strtoimax(num_str.c_str(), &endp, 10);
-                    if (errno == 0 && std::numeric_limits<int64_t>::min() <= ival && ival <= std::numeric_limits<int64_t>::max()
-                        && endp == num_str.c_str() + num_str.size())
+                    if (errno == 0 && std::numeric_limits<int64_t>::min() <= ival
+                        && ival <= std::numeric_limits<int64_t>::max() && endp == num_str.c_str() + num_str.size())
                     {
                         ctx.set_int64(ival);
                         return true;
@@ -1023,7 +1026,7 @@ inline bool _parse(Context& ctx, input<Iter>& in)
 
 class deny_parse_context
 {
-public:
+  public:
     bool set_null()
     {
         return false;
@@ -1073,10 +1076,10 @@ public:
 
 class default_parse_context
 {
-protected:
+  protected:
     value* out_;
 
-public:
+  public:
     default_parse_context(value* out)
         : out_(out)
     {
@@ -1139,14 +1142,14 @@ public:
         return _parse(ctx, in);
     }
 
-private:
+  private:
     default_parse_context(const default_parse_context&);
     default_parse_context& operator=(const default_parse_context&);
 };
 
 class null_parse_context
 {
-public:
+  public:
     struct dummy_str
     {
         void push_back(int)
@@ -1154,7 +1157,7 @@ public:
         }
     };
 
-public:
+  public:
     null_parse_context()
     {
     }
@@ -1205,7 +1208,7 @@ public:
         return _parse(*this, in);
     }
 
-private:
+  private:
     null_parse_context(const null_parse_context&);
     null_parse_context& operator=(const null_parse_context&);
 };
@@ -1281,7 +1284,7 @@ inline bool operator==(const value& x, const value& y)
     if (x.is<null>())
         return y.is<null>();
 #define PICOJSON_CMP(type) \
-    if (x.is<type>())      \
+    if (x.is<type>()) \
     return y.is<type>() && x.get<type>() == y.get<type>()
     PICOJSON_CMP(bool);
     PICOJSON_CMP(double);
@@ -1409,19 +1412,19 @@ int main(void)
 
 #undef TEST
 
-#define TEST(in, type, cmp, serialize_test)                         \
-    {                                                               \
-        picojson::value v;                                          \
-        const char*     s   = in;                                   \
+#define TEST(in, type, cmp, serialize_test) \
+    { \
+        picojson::value v; \
+        const char*     s   = in; \
         string          err = picojson::parse(v, s, s + strlen(s)); \
-        ok(err.empty(), in " no error");                            \
-        ok(v.is<type>(), in " check type");                         \
-        is<type>(v.get<type>(), cmp, in " correct output");         \
-        is(*s, '\0', in " read to eof");                            \
-        if (serialize_test)                                         \
-        {                                                           \
-            is(v.serialize(), string(in), in " serialize");         \
-        }                                                           \
+        ok(err.empty(), in " no error"); \
+        ok(v.is<type>(), in " check type"); \
+        is<type>(v.get<type>(), cmp, in " correct output"); \
+        is(*s, '\0', in " read to eof"); \
+        if (serialize_test) \
+        { \
+            is(v.serialize(), string(in), in " serialize"); \
+        } \
     }
     TEST("false", bool, false, true);
     TEST("true", bool, true, true);
@@ -1438,13 +1441,13 @@ int main(void)
 #endif
 #undef TEST
 
-#define TEST(type, expr)                                                   \
-    {                                                                      \
-        picojson::value v;                                                 \
-        const char*     s   = expr;                                        \
-        string          err = picojson::parse(v, s, s + strlen(s));        \
-        ok(err.empty(), "empty " #type " no error");                       \
-        ok(v.is<picojson::type>(), "empty " #type " check type");          \
+#define TEST(type, expr) \
+    { \
+        picojson::value v; \
+        const char*     s   = expr; \
+        string          err = picojson::parse(v, s, s + strlen(s)); \
+        ok(err.empty(), "empty " #type " no error"); \
+        ok(v.is<picojson::type>(), "empty " #type " check type"); \
         ok(v.get<picojson::type>().empty(), "check " #type " array size"); \
     }
     TEST(array, "[]");
@@ -1484,13 +1487,13 @@ int main(void)
         ok(!v.contains("z"), "check not contains property");
     }
 
-#define TEST(json, msg)                                             \
-    do                                                              \
-    {                                                               \
-        picojson::value v;                                          \
-        const char*     s   = json;                                 \
+#define TEST(json, msg) \
+    do \
+    { \
+        picojson::value v; \
+        const char*     s   = json; \
         string          err = picojson::parse(v, s, s + strlen(s)); \
-        is(err, string("syntax error at line " msg), msg);          \
+        is(err, string("syntax error at line " msg), msg); \
     } while (0)
     TEST("falsoa", "1 near: oa");
     TEST("{]", "1 near: ]");
@@ -1586,8 +1589,9 @@ int main(void)
         ok(err.empty(), "parse test data for prettifying output");
         ok(v.serialize() == "{\"a\":1,\"b\":[2,{\"b1\":\"abc\"}],\"c\":{},\"d\":[]}", "non-prettifying output");
         ok(v.serialize(true)
-               == "{\n  \"a\": 1,\n  \"b\": [\n    2,\n    {\n      \"b1\": \"abc\"\n    }\n  ],\n  \"c\": {},\n  \"d\": []\n}\n",
-           "prettifying output");
+                == "{\n  \"a\": 1,\n  \"b\": [\n    2,\n    {\n      \"b1\": \"abc\"\n    }\n  ],\n  \"c\": {},\n  "
+                   "\"d\": []\n}\n",
+            "prettifying output");
     }
 
     try

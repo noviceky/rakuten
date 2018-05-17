@@ -84,7 +84,7 @@ void SampleTableViewScene::initUI()
     ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
     this->addChild(ui);
 
-//    auto sampleInfoList = SampleService::getInstance()->getSampleListInfo();
+    //    auto sampleInfoList = SampleService::getInstance()->getSampleListInfo();
     auto sampleInfoList = SampleService::getInstance()->getSampleListInfoFromJson();
     ui->setSampleInfoList(sampleInfoList);
 }

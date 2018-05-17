@@ -384,7 +384,7 @@ void SampleDebugMenuScene::onSelectedCallbackSample2()
             _onSamlpleCalled(true);
         },
         3.0f, "delay_callback2");
-    
+
     LOG("SampleDebugMenuScene::onSelectedCallbackSample2の処理を抜けるよ");
 }
 
@@ -399,9 +399,7 @@ void SampleDebugMenuScene::onSelectedCallbackSample3()
 
     // 引数としてコールバック関数を直接受け渡すことも出来る
     // ここではdelayRespnse関数にラムダ式を直接受け渡している
-    delayRespnse([=](bool isSucceeded) {
-        LOG("delayRespnseの応答が返って来たよ− isSucceeded=%d",isSucceeded);
-    });
+    delayRespnse([=](bool isSucceeded) { LOG("delayRespnseの応答が返って来たよ− isSucceeded=%d", isSucceeded); });
 
     // もちろん、クラスのメンバ変数を直接渡すことも可能
     // delayRespnse(CC_CALLBACK_1(SampleDebugMenuScene::onSampleCalledFunc, this));
@@ -449,6 +447,6 @@ void SampleDebugMenuScene::delayRespnse(OnSampleCalled cb)
             }
         },
         3.0f, "delay_respnse");
-    
+
     LOG("SampleDebugMenuScene::delayRespnseを抜ける");
 }
