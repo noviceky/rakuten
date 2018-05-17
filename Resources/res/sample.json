@@ -1,0 +1,39 @@
+{
+    "array": [
+        {
+            "idx": 1,
+            "data": {
+                "title": "商品A", 
+                "listItemHeight": 100
+            }
+        }, 
+        {
+            "idx": 2,
+            "data": {
+                "title": "商品B", 
+                "listItemHeight": 110
+            } 
+        },
+        {
+            "idx": 3,
+            "data": {
+                "title": "商品C", 
+                "listItemHeight": 120
+            }
+        }, 
+        {
+            "idx": 4,
+            "data": {
+                "title": "商品D", 
+                "listItemHeight": 130
+            }
+        }, 
+        {
+            "idx": 5,
+            "data": {
+                "title": "商品E", 
+                "listItemHeight": 140
+            }
+        }
+    ]
+}

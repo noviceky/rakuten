@@ -1,0 +1,37 @@
+<Solution>
+  <PropertyGroup Name="rakutenRankingUI" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="fonts">
+          <TTF Name="03SmartFontUI.ttf" />
+          <TTF Name="arial.ttf" />
+        </Folder>
+        <Folder Name="images">
+          <Image Name="bg_pink.jpg" />
+          <Image Name="bg_white.png" />
+          <Image Name="header.png" />
+          <Image Name="ic_add_48pt.png" />
+          <Image Name="ic_check_box.png" />
+          <Image Name="ic_check_box_outline_blank.png" />
+          <Image Name="ic_close_48pt.png" />
+          <Image Name="ic_settings_48pt.png" />
+          <Image Name="ic_star_48pt.png" />
+          <Image Name="ic_star_border_black_48dp.png" />
+          <Image Name="ic_view_array_48pt.png" />
+          <Image Name="ic_view_headline_48pt.png" />
+          <Image Name="ic_view_list_48pt.png" />
+          <Image Name="ic_view_module_48pt.png" />
+          <Image Name="no_image.png" />
+          <Image Name="round.png" />
+        </Folder>
+        <Project Name="footer.csd" Type="Layer" />
+        <Project Name="header.csd" Type="Layer" />
+        <Image Name="HelloWorld.png" />
+        <Project Name="list_item_s.csd" Type="Layer" />
+        <Project Name="loading_scene.csd" Type="Scene" />
+        <Project Name="sample_scene.csd" Type="Scene" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
