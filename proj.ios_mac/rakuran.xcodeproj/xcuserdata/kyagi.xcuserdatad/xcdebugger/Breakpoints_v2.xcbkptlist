@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "548236077.204446"
+            filePath = "../Classes/app/parts/PartsLoadingScene.cpp"
+            timestampString = "548326086.0615799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "AppDelegate::applicationDidFinishLaunching()"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "PartsLoadingScene::updateLoadingText(float delta)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -33,9 +33,9 @@ class MainScene : public Scene
     virtual void onExitTransitionDidStart() override;
 
   private:
-      void initUI();
+    void initUI();
 
-      PartsMainScene* _partsScene;
+    PartsMainScene* _partsScene;
 };
 
 #endif /* defined(__rakuran__MainScene__) */
