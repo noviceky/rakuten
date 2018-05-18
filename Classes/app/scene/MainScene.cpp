@@ -1,40 +1,37 @@
 //
-//  LoadingScene.cpp
-//  rakuran
+//  MainScene.cpp
+//  rakuran-mobile
 //
-//  Created by Choshi on 02/18/18.
-//
+//  Created by kyagi on 2018/05/18.
 //
 
-#include "LoadingScene.hpp"
-#include "AppMacro.h"
 #include "MainScene.hpp"
-#include "PartsLoadingScene.hpp"
-#include "SampleDebugMenuScene.hpp"
+#include "AppMacro.h"
+#include "PartsMainScene.hpp"
 
-LoadingScene* LoadingScene::createScene()
+MainScene* MainScene::createScene()
 {
     TRACE;
-    auto scene = new LoadingScene();
+    auto scene = new MainScene();
     scene->autorelease();
     scene->init();
     return scene;
 }
 
-LoadingScene::LoadingScene()
+MainScene::MainScene()
     : _partsScene(nullptr)
 {
     // constructor
     TRACE;
 }
 
-LoadingScene::~LoadingScene()
+MainScene::~MainScene()
 {
     // destructor
     TRACE;
 }
 
-bool LoadingScene::init()
+bool MainScene::init()
 {
     TRACE;
     auto ret = Scene::init();
@@ -45,48 +42,44 @@ bool LoadingScene::init()
     return true;
 }
 
-void LoadingScene::onEnter()
+void MainScene::onEnter()
 {
     TRACE;
     Scene::onEnter();
 }
 
-void LoadingScene::onEnterTransitionDidFinish()
+void MainScene::onEnterTransitionDidFinish()
 {
     TRACE;
     Scene::onEnterTransitionDidFinish();
 
-    if (_partsScene)
-    {
-        _partsScene->startLoadingAnimation();
-    }
-    this->scheduleOnce(
-        [=](float delta) {
-            // TODO: ここに次画面への遷移処理を実装する
-            // メニュー画面へ遷移
-            auto scene      = MainScene::createScene();
-            auto transition = TransitionFade::create(1.0f, scene, Color3B::WHITE);
-            Director::getInstance()->replaceScene(transition);
-        },
-        3.0f, "delay_replace_scene");
+    //    if (_partsScene)
+    //    {
+    //        _partsScene->startLoadingAnimation();
+    //    }
+    //    this->scheduleOnce(
+    //                       [=](float delta) {
+    //                           // TODO: ここに次画面への遷移処理を実装する
+    //                       },
+    //                       3.0f, "delay_replace_scene");
 }
 
-void LoadingScene::onExit()
+void MainScene::onExit()
 {
     TRACE;
     Scene::onExit();
 }
 
-void LoadingScene::onExitTransitionDidStart()
+void MainScene::onExitTransitionDidStart()
 {
     TRACE;
     Scene::onExitTransitionDidStart();
 }
 
-void LoadingScene::initUI()
+void MainScene::initUI()
 {
     TRACE;
-    _partsScene = PartsLoadingScene::create();
+    _partsScene = PartsMainScene::create();
     this->addChild(_partsScene);
 
 #if DEBUG_MENU_ENABLE
@@ -106,10 +99,10 @@ void LoadingScene::initUI()
                 return;
             }
 
-            // サンプルのメニュー画面へ遷移
-            auto scene      = SampleDebugMenuScene::createScene();
-            auto transition = TransitionFade::create(1.0f, scene, Color3B::WHITE);
-            Director::getInstance()->replaceScene(transition);
+            //            // サンプルのメニュー画面へ遷移
+            //            auto scene      = SampleDebugMenuScene::createScene();
+            //            auto transition = TransitionFade::create(1.0f, scene, Color3B::WHITE);
+            //            Director::getInstance()->replaceScene(transition);
         });
         this->addChild(panel);
 
