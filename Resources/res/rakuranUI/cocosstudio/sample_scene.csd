@@ -25,7 +25,7 @@
             <Position X="0.0015" Y="975.4548" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.8587" />
+            <PrePosition Y="0.8587" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -35,7 +35,7 @@
             <Position X="0.0012" Y="887.4564" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.7812" />
+            <PrePosition Y="0.7812" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -45,7 +45,7 @@
             <Position X="0.0012" Y="801.4582" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.7055" />
+            <PrePosition Y="0.7055" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -55,7 +55,7 @@
             <Position X="0.0015" Y="713.4545" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.6280" />
+            <PrePosition Y="0.6280" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -65,7 +65,7 @@
             <Position X="0.0015" Y="625.4617" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.5506" />
+            <PrePosition Y="0.5506" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -75,7 +75,7 @@
             <Position X="0.0015" Y="535.4658" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.4714" />
+            <PrePosition Y="0.4714" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -85,7 +85,7 @@
             <Position X="0.0015" Y="445.4670" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.3921" />
+            <PrePosition Y="0.3921" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>
@@ -95,7 +95,7 @@
             <Position X="0.0015" Y="355.4715" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0000" Y="0.3129" />
+            <PrePosition Y="0.3129" />
             <PreSize X="1.0000" Y="0.0704" />
             <FileData Type="Normal" Path="list_item_s.csd" Plist="" />
           </AbstractNodeData>

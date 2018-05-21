@@ -1,5 +1,5 @@
 <GameFile>
-  <PropertyGroup Name="loadingScene" Type="Scene" ID="464b5301-06f2-4df9-945d-c88bd26105eb" Version="3.10.0.0" />
+  <PropertyGroup Name="loading_scene" Type="Scene" ID="464b5301-06f2-4df9-945d-c88bd26105eb" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />

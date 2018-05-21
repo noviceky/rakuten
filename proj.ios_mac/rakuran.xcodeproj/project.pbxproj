@@ -37,6 +37,8 @@
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		8A56099620AE7A0900102DEA /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A56099420AE7A0900102DEA /* MainScene.cpp */; };
+		8ADF082A20AD81FB0086B847 /* PartsMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */; };
 		B311F39D2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */; };
 		B33A2655204700DD00AB4E69 /* PartsSampleTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33A2651204700DC00AB4E69 /* PartsSampleTableView.cpp */; };
 		B33A2656204700DD00AB4E69 /* PartsSampleTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33A2653204700DD00AB4E69 /* PartsSampleTableViewCell.cpp */; };
@@ -133,6 +135,10 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8A56099420AE7A0900102DEA /* MainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
+		8A56099520AE7A0900102DEA /* MainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainScene.hpp; sourceTree = "<group>"; };
+		8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartsMainScene.cpp; sourceTree = "<group>"; };
+		8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsMainScene.hpp; sourceTree = "<group>"; };
 		B311F3992045BFC400F8CB72 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartsSampleDebugMenuList.cpp; sourceTree = "<group>"; };
 		B311F39C2045C51200F8CB72 /* PartsSampleDebugMenuList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PartsSampleDebugMenuList.hpp; sourceTree = "<group>"; };
@@ -262,6 +268,8 @@
 			children = (
 				32B5CA2220527F8C00E9ADCA /* PartsLoadingScene.cpp */,
 				32B5CA2A20527F8C00E9ADCA /* PartsLoadingScene.hpp */,
+				8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */,
+				8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */,
 			);
 			path = parts;
 			sourceTree = "<group>";
@@ -288,8 +296,8 @@
 			isa = PBXGroup;
 			children = (
 				B35928A920446CAF0040F10E /* app */,
-				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				B35928B020446CAF0040F10E /* AppMacro.h */,
 				B311F3992045BFC400F8CB72 /* const.h */,
 				B3C241252067CA9200AE6022 /* picojson.h */,
@@ -403,6 +411,8 @@
 			children = (
 				B35928AE20446CAF0040F10E /* LoadingScene.cpp */,
 				B35928AF20446CAF0040F10E /* LoadingScene.hpp */,
+				8A56099420AE7A0900102DEA /* MainScene.cpp */,
+				8A56099520AE7A0900102DEA /* MainScene.hpp */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -532,9 +542,11 @@
 				B311F39D2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				32E4109B204D3EAB00ADAC45 /* SampleService.cpp in Sources */,
+				8ADF082A20AD81FB0086B847 /* PartsMainScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				B35928B120446CAF0040F10E /* SampleDebugMenuScene.cpp in Sources */,
 				B33A2659204700E500AB4E69 /* SampleTableViewScene.cpp in Sources */,
+				8A56099620AE7A0900102DEA /* MainScene.cpp in Sources */,
 				B35928B320446CAF0040F10E /* LoadingScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
