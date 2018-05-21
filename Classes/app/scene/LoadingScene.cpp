@@ -8,6 +8,7 @@
 
 #include "LoadingScene.hpp"
 #include "AppMacro.h"
+#include "MainScene.hpp"
 #include "PartsLoadingScene.hpp"
 #include "SampleDebugMenuScene.hpp"
 
@@ -62,6 +63,10 @@ void LoadingScene::onEnterTransitionDidFinish()
     this->scheduleOnce(
         [=](float delta) {
             // TODO: ここに次画面への遷移処理を実装する
+            // メニュー画面へ遷移
+            auto scene      = MainScene::createScene();
+            auto transition = TransitionFade::create(1.0f, scene, Color3B::WHITE);
+            Director::getInstance()->replaceScene(transition);
         },
         3.0f, "delay_replace_scene");
 }
