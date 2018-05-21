@@ -32,19 +32,10 @@ class PartsMainScene : public Node
 
     virtual void update(float delta) override;
 
-    /**
-     *  @brief ローディングアニメーション開始
-     */
-    void startLoadingAnimation();
-
   private:
     void initUI();
-    void initLoadingTextNode();
-    void updateLoadingText(float delta);
 
-    float _elapsed;
-    Node *_csbHeader, *_csbFooter, *_csbBody;
-    Text* _loadingText;
+    Node *_csbHeader, *_csbFooter;
 };
 
 #endif /* defined(__rakuran__PartsMainScene__) */

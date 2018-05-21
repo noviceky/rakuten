@@ -45,11 +45,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setAnimationInterval(1.0 / 60);
 
     // Set the design resolution
-    //glview->setDesignResolutionSize(MAIN_VIEW_WIDTH, MAIN_VIEW_HEIGHT, ResolutionPolicy::FIXED_HEIGHT);
-    glview->setDesignResolutionSize(MAIN_VIEW_WIDTH, MAIN_VIEW_HEIGHT, ResolutionPolicy::SHOW_ALL);
-    //    auto frameSize = glview->getFrameSize();
-    //    auto designResolutionSize = glview->getDesignResolutionSize();
-    //    director->setContentScaleFactor(frameSize.width / designResolutionSize.width);
+    glview->setDesignResolutionSize(MAIN_VIEW_WIDTH, MAIN_VIEW_HEIGHT, ResolutionPolicy::FIXED_HEIGHT);
+
     // add resource search path
     auto fileUtiles = FileUtils::getInstance();
     fileUtiles->addSearchPath("res");
