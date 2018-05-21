@@ -13,13 +13,15 @@
 
 #define WINSIZE Director::getInstance()->getWinSize()
 #define WINCENTER Point(WINSIZE.width * 0.5, WINSIZE.height * 0.5)
-#define WIN_WIDTH Director::getInstance()->getWinSize().width
-#define WIN_HEIGHT Director::getInstance()->getWinSize().height
+#define WIN_WIDTH Director::getInstance()->getWinSize().width    //setDesignResolutionしたら下と同じ
+#define WIN_HEIGHT Director::getInstance()->getWinSize().height  //setDesignResolutionしたら下と同じ
 #define MAIN_VIEW_WIDTH 640
 #define MAIN_VIEW_HEIGHT 1136
 #define MAIN_VIEW_SIZE Size(MAIN_VIEW_WIDTH, MAIN_VIEW_HEIGHT)
 #define HEADER_HEIGHT 64.0
 #define FOOTER_HEIGHT 100.0
+//#define FIXED_HEIGHT CCEGLView::sharedOpenGLView()->getFrameSize().width;
+//#define FIXED_HEIGHT CCEGLView::sharedOpenGLView()->getFrameSize().height;
 
 // デバック機能
 #if DEBUG

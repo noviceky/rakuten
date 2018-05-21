@@ -89,14 +89,13 @@ void PartsMainScene::initUI()
     _csbHeader = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_HEADER_NAME);
     _csbFooter = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_FOOTER_NAME);
 
-    this->setContentSize(Size(MAIN_VIEW_WIDTH, MAIN_VIEW_HEIGHT));
-    this->setPosition(Vec2::ANCHOR_BOTTOM_LEFT);
-
     this->addChild(_csbHeader);
     this->addChild(_csbFooter);
 
-    _csbHeader->setPosition(Vec2::ANCHOR_TOP_LEFT);
-    _csbFooter->setPosition(Vec2::ANCHOR_BOTTOM_LEFT);
+    _csbHeader->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
+    _csbFooter->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    _csbHeader->setPosition(Size(0, MAIN_VIEW_HEIGHT));
+    _csbFooter->setPosition(Size(0, 0));
     // thisのコンテンツサイズを_csbに合わせる
     this->setContentSize(_csbHeader->getContentSize());
     this->setContentSize(_csbFooter->getContentSize());

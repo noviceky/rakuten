@@ -296,8 +296,8 @@
 			isa = PBXGroup;
 			children = (
 				B35928A920446CAF0040F10E /* app */,
-				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				B35928B020446CAF0040F10E /* AppMacro.h */,
 				B311F3992045BFC400F8CB72 /* const.h */,
 				B3C241252067CA9200AE6022 /* picojson.h */,

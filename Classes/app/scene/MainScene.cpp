@@ -79,11 +79,11 @@ void MainScene::onExitTransitionDidStart()
 void MainScene::initUI()
 {
     TRACE;
-    this->setContentSize(MAIN_VIEW_SIZE);
+    //this->setContentSize(MAIN_VIEW_SIZE);
     _partsScene = PartsMainScene::create();
     this->addChild(_partsScene);
 
-    this->cocos2d::Node::setPosition(Vec2::ANCHOR_TOP_LEFT);
+    //this->cocos2d::Node::setPosition(Vec2::ANCHOR_BOTTOM_LEFT);
 #if DEBUG_MENU_ENABLE
     // サンプルメニューへの導線表示追加
     {
