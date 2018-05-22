@@ -5,3 +5,4 @@ UserInterfaceState.xcuserstate // ここで指定
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
