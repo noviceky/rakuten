@@ -2,3 +2,6 @@
 *.swp // これも指定しておくと便利
 
 UserInterfaceState.xcuserstate // ここで指定
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcworkspace/contents.xcworkspacedata
