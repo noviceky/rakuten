@@ -14,11 +14,11 @@ namespace
 
 const char* CSB_HEADER_NAME      = "header.csb";
 const char* CSB_FOOTER_NAME      = "footer.csb";
-std::string BOTTON_HEADLINE_NAME = "btn_headline";
-std::string BOTTON_LIST_NAME     = "btn_list";
-std::string BOTTON_MODULE_NAME   = "btn_module";
-std::string BOTTON_ARRAY_NAME    = "btn_array";
-std::string BOTTON_SETTING_NAME  = "btn_setting";
+const char* BUTTON_HEADLINE_NAME = "btn_headline";
+const char* BUTTON_LIST_NAME     = "btn_list";
+const char* BUTTON_MODULE_NAME   = "btn_module";
+const char* BUTTON_ARRAY_NAME    = "btn_array";
+const char* BUTTON_SETTING_NAME  = "btn_setting";
 }  // namespace
 
 PartsMainScene::PartsMainScene()
@@ -106,9 +106,9 @@ void PartsMainScene::initUI()
 /**
   * タッチイベント取得共通部分
   * @param {Node *} csb ヘッダかフッタの参照
-  * @param {std::string} buttonName ボタン要素の名前
+  * @param {const char*} buttonName ボタン要素の名前
   */
-void PartsMainScene::listenButton(Node* csb, std::string buttonName)
+void PartsMainScene::listenButton(Node* csb, const char* buttonName)
 {
     //タッチイベント取得
     auto button = csb->getChildByName<ui::Button*>(buttonName);
@@ -119,31 +119,31 @@ void PartsMainScene::listenButton(Node* csb, std::string buttonName)
             return;
         }
         //タッチが終わったら
-        LOG("%s Pressed", buttonName.c_str());
+        LOG("%s Pressed", buttonName);
     });
 }
 
 void PartsMainScene::listenHeaderButton()
 {
-    listenButton(_csbHeader, BOTTON_HEADLINE_NAME);
+    listenButton(_csbHeader, BUTTON_HEADLINE_NAME);
 }
 
 void PartsMainScene::listenFooterList()
 {
-    listenButton(_csbFooter, BOTTON_LIST_NAME);
+    listenButton(_csbFooter, BUTTON_LIST_NAME);
 }
 
 void PartsMainScene::listenFooterModule()
 {
-    listenButton(_csbFooter, BOTTON_MODULE_NAME);
+    listenButton(_csbFooter, BUTTON_MODULE_NAME);
 }
 
 void PartsMainScene::listenFooterArray()
 {
-    listenButton(_csbFooter, BOTTON_ARRAY_NAME);
+    listenButton(_csbFooter, BUTTON_ARRAY_NAME);
 }
 
 void PartsMainScene::listenFooterSetting()
 {
-    listenButton(_csbFooter, BOTTON_SETTING_NAME);
+    listenButton(_csbFooter, BUTTON_SETTING_NAME);
 }

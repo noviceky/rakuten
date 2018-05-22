@@ -34,7 +34,7 @@ class PartsMainScene : public Node
 
   private:
     void initUI();
-    void listenButton(Node* csb, std::string buttonName);
+    void listenButton(Node* csb, const char* buttonName);
     void listenHeaderButton();
     void listenFooterList();
     void listenFooterModule();
