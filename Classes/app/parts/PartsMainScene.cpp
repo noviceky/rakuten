@@ -12,9 +12,13 @@ namespace
 {
 // 無名名前空間
 
-const char* CSB_HEADER_NAME    = "header.csb";
-const char* CSB_FOOTER_NAME    = "footer.csb";
-const float ANIMATION_INTERVAL = 3.0f;
+const char* CSB_HEADER_NAME      = "header.csb";
+const char* CSB_FOOTER_NAME      = "footer.csb";
+const char* BUTTON_HEADLINE_NAME = "btn_headline";
+const char* BUTTON_LIST_NAME     = "btn_list";
+const char* BUTTON_MODULE_NAME   = "btn_module";
+const char* BUTTON_ARRAY_NAME    = "btn_array";
+const char* BUTTON_SETTING_NAME  = "btn_setting";
 }  // namespace
 
 PartsMainScene::PartsMainScene()
@@ -91,4 +95,55 @@ void PartsMainScene::initUI()
     _csbFooter->setPosition(Size(0, 0));
     // thisのコンテンツサイズを_MAIN_VIEW_SIZEに合わせる
     this->setContentSize(MAIN_VIEW_SIZE);
+
+    listenHeaderButton();
+    listenFooterList();
+    listenFooterModule();
+    listenFooterArray();
+    listenFooterSetting();
+}
+
+/**
+  * タッチイベント取得共通部分
+  * @param {Node *} csb ヘッダかフッタの参照
+  * @param {const char*} buttonName ボタン要素の名前
+  */
+void PartsMainScene::listenButton(Node* csb, const char* buttonName)
+{
+    //タッチイベント取得
+    auto button = csb->getChildByName<ui::Button*>(buttonName);
+
+    button->addTouchEventListener([=](Ref* ref, Widget::TouchEventType eventType) {
+        if (eventType != Widget::TouchEventType::ENDED)
+        {
+            return;
+        }
+        //タッチが終わったら
+        LOG("%s Pressed", buttonName);
+    });
+}
+
+void PartsMainScene::listenHeaderButton()
+{
+    listenButton(_csbHeader, BUTTON_HEADLINE_NAME);
+}
+
+void PartsMainScene::listenFooterList()
+{
+    listenButton(_csbFooter, BUTTON_LIST_NAME);
+}
+
+void PartsMainScene::listenFooterModule()
+{
+    listenButton(_csbFooter, BUTTON_MODULE_NAME);
+}
+
+void PartsMainScene::listenFooterArray()
+{
+    listenButton(_csbFooter, BUTTON_ARRAY_NAME);
+}
+
+void PartsMainScene::listenFooterSetting()
+{
+    listenButton(_csbFooter, BUTTON_SETTING_NAME);
 }
