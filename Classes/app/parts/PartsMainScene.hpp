@@ -34,6 +34,12 @@ class PartsMainScene : public Node
 
   private:
     void initUI();
+    void listenButton(Node* csb, std::string buttonName);
+    void listenHeaderButton();
+    void listenFooterList();
+    void listenFooterModule();
+    void listenFooterArray();
+    void listenFooterSetting();
 
     Node *_csbHeader, *_csbFooter;
 };
