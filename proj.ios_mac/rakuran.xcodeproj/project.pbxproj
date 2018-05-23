@@ -39,6 +39,7 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8A56099620AE7A0900102DEA /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A56099420AE7A0900102DEA /* MainScene.cpp */; };
 		8ADF082A20AD81FB0086B847 /* PartsMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */; };
+		8AEB072620B563F000D8F7BB /* RakutenService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB072420B563F000D8F7BB /* RakutenService.cpp */; };
 		B311F39D2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */; };
 		B33A2655204700DD00AB4E69 /* PartsSampleTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33A2651204700DC00AB4E69 /* PartsSampleTableView.cpp */; };
 		B33A2656204700DD00AB4E69 /* PartsSampleTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33A2653204700DD00AB4E69 /* PartsSampleTableViewCell.cpp */; };
@@ -139,6 +140,8 @@
 		8A56099520AE7A0900102DEA /* MainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainScene.hpp; sourceTree = "<group>"; };
 		8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartsMainScene.cpp; sourceTree = "<group>"; };
 		8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsMainScene.hpp; sourceTree = "<group>"; };
+		8AEB072420B563F000D8F7BB /* RakutenService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RakutenService.cpp; sourceTree = "<group>"; };
+		8AEB072520B563F000D8F7BB /* RakutenService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RakutenService.hpp; sourceTree = "<group>"; };
 		B311F3992045BFC400F8CB72 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartsSampleDebugMenuList.cpp; sourceTree = "<group>"; };
 		B311F39C2045C51200F8CB72 /* PartsSampleDebugMenuList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PartsSampleDebugMenuList.hpp; sourceTree = "<group>"; };
@@ -354,6 +357,15 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		8AEB072320B563F000D8F7BB /* service */ = {
+			isa = PBXGroup;
+			children = (
+				8AEB072420B563F000D8F7BB /* RakutenService.cpp */,
+				8AEB072520B563F000D8F7BB /* RakutenService.hpp */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
 		B311F39A2045C51200F8CB72 /* parts */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +412,7 @@
 		B35928A920446CAF0040F10E /* app */ = {
 			isa = PBXGroup;
 			children = (
+				8AEB072320B563F000D8F7BB /* service */,
 				32B5CA2120527F8C00E9ADCA /* parts */,
 				B35928AD20446CAF0040F10E /* scene */,
 			);
@@ -549,6 +562,7 @@
 				8A56099620AE7A0900102DEA /* MainScene.cpp in Sources */,
 				B35928B320446CAF0040F10E /* LoadingScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				8AEB072620B563F000D8F7BB /* RakutenService.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
