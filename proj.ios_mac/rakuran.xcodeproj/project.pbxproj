@@ -299,6 +299,11 @@
 			isa = PBXGroup;
 			children = (
 				B35928A920446CAF0040F10E /* app */,
+				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
+				B35928B020446CAF0040F10E /* AppMacro.h */,
+				B311F3992045BFC400F8CB72 /* const.h */,
+				B3C241252067CA9200AE6022 /* picojson.h */,
 				B359289F20446CAF0040F10E /* sample */,
 			);
 			name = Classes;
@@ -407,11 +412,6 @@
 		B35928A920446CAF0040F10E /* app */ = {
 			isa = PBXGroup;
 			children = (
-				46880B8519C43A87006E1F66 /* AppDelegate.h */,
-				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
-				B35928B020446CAF0040F10E /* AppMacro.h */,
-				B311F3992045BFC400F8CB72 /* const.h */,
-				B3C241252067CA9200AE6022 /* picojson.h */,
 				8AEB072320B563F000D8F7BB /* service */,
 				32B5CA2120527F8C00E9ADCA /* parts */,
 				B35928AD20446CAF0040F10E /* scene */,
