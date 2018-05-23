@@ -14,7 +14,12 @@ struct RankInfoDTO
      *  @brief index
      */
     int idx;
-    
+
+    /**
+     *  @brief 順位
+     */
+    int rank;
+
     /**
      *  @brief タイトル
      */
@@ -22,4 +27,3 @@ struct RankInfoDTO
 };
 
 #endif /* defined(__rakuran__RankInfoDTO__) */
-
