@@ -142,6 +142,7 @@
 		8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsMainScene.hpp; sourceTree = "<group>"; };
 		8AEB072420B563F000D8F7BB /* RakutenService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RakutenService.cpp; sourceTree = "<group>"; };
 		8AEB072520B563F000D8F7BB /* RakutenService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RakutenService.hpp; sourceTree = "<group>"; };
+		8AEB073120B5775500D8F7BB /* RankInfoDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankInfoDTO.h; sourceTree = "<group>"; };
 		B311F3992045BFC400F8CB72 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
 		B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PartsSampleDebugMenuList.cpp; sourceTree = "<group>"; };
 		B311F39C2045C51200F8CB72 /* PartsSampleDebugMenuList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PartsSampleDebugMenuList.hpp; sourceTree = "<group>"; };
@@ -366,6 +367,14 @@
 			path = service;
 			sourceTree = "<group>";
 		};
+		8AEB073020B5775500D8F7BB /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				8AEB073120B5775500D8F7BB /* RankInfoDTO.h */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
 		B311F39A2045C51200F8CB72 /* parts */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +423,7 @@
 			children = (
 				8AEB072320B563F000D8F7BB /* service */,
 				32B5CA2120527F8C00E9ADCA /* parts */,
+				8AEB073020B5775500D8F7BB /* dto */,
 				B35928AD20446CAF0040F10E /* scene */,
 			);
 			path = app;
