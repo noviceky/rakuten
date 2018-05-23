@@ -9,6 +9,7 @@
 #define __rakuran__RakutenService__
 
 #include "cocos2d.h"
+#include "RankInfoDTO.h"
 
 using namespace cocos2d;
 
@@ -22,6 +23,8 @@ class RakutenService
     static RakutenService* getInstance();
     static void            destroy();
     static RakutenService* _instance;
+    
+    const std::vector<RankInfoDTO> getSampleListInfo();
 
   private:
     RakutenService();

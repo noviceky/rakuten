@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "AppMacro.h"
 #include "LoadingScene.hpp"
+#include "RakutenService.hpp"// ダミー実装入っているか確認 TODO 消す
 
 USING_NS_CC;
 
@@ -53,7 +54,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     fileUtiles->addSearchPath("res/rakuranUI/Resources/res");
     fileUtiles->addSearchPath("res/rakuranUI/Resources/res/fonts");
     fileUtiles->addSearchPath("res/rakuranUI/Resources/res/images");
-
+    
+    // ダミー実装入っているか確認 TODO 消す
+    auto rakutenService = RakutenService::getInstance();
+    auto list = rakutenService->getSampleListInfo();
+    
+    for (int i = 0; i < 30; i++)
+    {
+        LOG("idx %d = rank %d title: %s", list[i].idx,list[i].rank,list[i].title.c_str());
+    } //TODO ここまで消す
+    
     // create a scene. it's an autorelease object
     auto scene = LoadingScene::createScene();
 
