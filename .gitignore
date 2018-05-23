@@ -1,8 +1,94 @@
-.DS_Store
-*.swp // これも指定しておくと便利
+# http://stackoverflow.com/questions/23764083/git-cocos2d-x-what-files-can-i-add-to-gitignore
 
-UserInterfaceState.xcuserstate // ここで指定
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcworkspace/contents.xcworkspacedata
+id.txt
+
+# Mac
+.DS_Store
+
+#Java
+*.class
+local.properties
+
+# XCode
+*.moved-aside
+build/*
+*.xcworkspace
+*.mode1v3
+*.mode2v3
+*.pbxuser
+!default.xcworkspace
+!default.mode1v3
+!default.mode2v3
+!default.pbxuser
+*.perspectivev3
+profile
 xcuserdata/
+.idea/*
+proj.ios_mac/libcocos2d iOS.a
+atm.xcarchive/
+UserInterfaceState.xcuserstate
+
+# Android Studio
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+local.properties
+.classpath
+.project
+proguard/
+*.iml
+*.ipr
+*.iws
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries/
+.gradle
+app/build/
+proj.android-studio/app/libs/armeabi/
+proj.android-studio/app/libs/armeabi-v7a/
+proj.android-studio/app/libs/x86/
+proj.android-studio/app/libs/facebook/build/
+cocos2d/cocos/platform/android/libcocos2dx/build/
+proj.android-studio/app/libs/facebook/build/
+proj.android-studio/unityads/build/
+proj.android-studio/app/libs/everyplay/build/
+proj.android-studio/app/libs/LobiCore/build/
+proj.android-studio/app/libs/LobiRanking/build/
+
+#Cocoa pods
+*.old
+Pods/*
+
+#cocos2d-x
+bin/
+obj/
+assets/
+gen/
+out/
+.classpath
+.project
+.cproject
+
+#proj.android
+proj.android/libs/armeabi/libcocos2dcpp.so
+proj.android/libs/facebook/local.properties
+proj.android/libs/google-play-services_lib/local.properties
+
+# backup files
+*.bak
+*.bak[0-9][0-9]
+*.orig
+*.orig[0-9][0-9]
+
+# source packages - anywhere
+*.tar.bz2
+*.tar.gz
+*.tar
+*.tgz
+*.gtgz
+
+# vscode
+.vscode/
