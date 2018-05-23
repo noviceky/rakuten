@@ -8,7 +8,7 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
-RakutenService* RakutenService::_instance = NULL;
+RakutenService* RakutenService::_instance = nullptr;
 
 RakutenService::RakutenService()
 {
