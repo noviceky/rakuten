@@ -7,8 +7,8 @@
 
 #include "PartsMainScene.hpp"
 #include "AppMacro.h"
-#include "RakutenService.hpp"
 #include "PartsTableView.hpp"
+#include "RakutenService.hpp"
 
 namespace
 {
@@ -16,17 +16,20 @@ namespace
 
 const char* CSB_HEADER_NAME      = "header.csb";
 const char* CSB_FOOTER_NAME      = "footer.csb";
+const char* JPG_BACKGROUND_NAME  = "bg_pink.jpg";
 const char* BUTTON_HEADLINE_NAME = "btn_headline";
 const char* BUTTON_LIST_NAME     = "btn_list";
 const char* BUTTON_MODULE_NAME   = "btn_module";
 const char* BUTTON_ARRAY_NAME    = "btn_array";
 const char* BUTTON_SETTING_NAME  = "btn_setting";
-const Size kTableViewContentSize = MAIN_VIEW_SIZE - Size(20.f, 300.f);
 }  // namespace
 
 PartsMainScene::PartsMainScene()
     : _csbHeader(nullptr)
     , _csbFooter(nullptr)
+    , _backGroundJPG(nullptr)
+    , _tableMarginTop(0)
+    , _tableMarginBottom(0)
 {
     // constructor
     TRACE;
@@ -93,25 +96,36 @@ void PartsMainScene::initUI()
     _csbFooter->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     _csbHeader->setPosition(Size(0, MAIN_VIEW_HEIGHT));
     _csbFooter->setPosition(Size(0, 0));
-    // thisのコンテンツサイズを_MAIN_VIEW_SIZEに合わせる
-    this->setContentSize(MAIN_VIEW_SIZE);
 
+    //タッチイベントを取得
     listenHeaderButton();
     listenFooterList();
     listenFooterModule();
     listenFooterArray();
     listenFooterSetting();
-    
+
+    //ヘッダとフッタのサイズからTableViewの表示領域を決める
+    _tableMarginTop            = _csbHeader->getContentSize().height;
+    _tableMarginBottom         = _csbFooter->getContentSize().height;
+    auto kTableViewContentSize = MAIN_VIEW_SIZE - Size(0, (_tableMarginTop + _tableMarginBottom));
+
     //TableViewの配置
     auto ui = PartsTableView::create(kTableViewContentSize);
     ui->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     ui->setPosition(MAIN_VIEW_SIZE / 2);
     ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
-    this->addChild(ui);
-    
+
     auto RankInfoDTOList = RakutenService::getInstance()->getRankInfoDTOList();
     ui->setRankInfoDTOList(RankInfoDTOList);
-    
+
+    //背景の配置
+    _backGroundJPG = Sprite::create(JPG_BACKGROUND_NAME);
+    _backGroundJPG->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+
+    // thisのコンテンツサイズを_MAIN_VIEW_SIZEに合わせる
+    this->setContentSize(MAIN_VIEW_SIZE);
+    this->addChild(_backGroundJPG);
+    this->addChild(ui);
     this->addChild(_csbHeader);
     this->addChild(_csbFooter);
 }

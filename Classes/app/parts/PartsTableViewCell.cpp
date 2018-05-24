@@ -11,7 +11,7 @@
 
 namespace
 {
-    const float kFontSize = 24;
+const float kFontSize = 24;
 }  // namespace
 
 PartsTableViewCell::PartsTableViewCell()
@@ -48,7 +48,7 @@ void PartsTableViewCell::onExit()
 {
     TRACE;
     Layout::onExit();
-    
+
     this->unscheduleUpdate();
 }
 
@@ -66,7 +66,7 @@ void PartsTableViewCell::initWithViewCellInfo(const int idx, const Size& size, c
     this->setBackGroundColorType(BackGroundColorType::SOLID);
     this->setBackGroundColor(idx % 2 ? Color3B::BLUE : Color3B::GREEN);
     this->setBackGroundColorOpacity(100);
-    
+
     // タイトル文言設定
     auto text = Text::create(title, rakuran::fontName, kFontSize);
     text->setTextColor(Color4B::RED);

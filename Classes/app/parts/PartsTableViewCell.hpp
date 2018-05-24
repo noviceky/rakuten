@@ -17,12 +17,12 @@ using namespace ui;
 
 class PartsTableViewCell : public Layout
 {
-public:
+  public:
     CREATE_FUNC(PartsTableViewCell);
-    
+
     void initWithViewCellInfo(const int idx, const Size& size, const std::string& title);
-    
-private:
+
+  private:
     PartsTableViewCell();
     virtual ~PartsTableViewCell();
     virtual bool init() override;

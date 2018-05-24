@@ -12,7 +12,7 @@
 
 namespace
 {
-    const int TABLE_CELL_NUM = 10; //画面に幾つCell表示させるか Cellの高さにも影響
+const int TABLE_CELL_NUM = 10;  //画面に幾つCell表示させるか Cellの高さにも影響
 }  // namespace
 
 PartsTableView* PartsTableView::create(const Size& size)
@@ -33,20 +33,20 @@ PartsTableView* PartsTableView::create(const Size& size)
 }
 
 PartsTableView::PartsTableView()
-: _tableView(nullptr)
-, _onSelected(nullptr)
-, _tableViewContentSize(Size::ZERO)
-, _tableViewCellSize(Size::ZERO)
+    : _tableView(nullptr)
+    , _onSelected(nullptr)
+    , _tableViewContentSize(Size::ZERO)
+    , _tableViewCellSize(Size::ZERO)
 {
     // constructor
     TRACE;
 }
 
 PartsTableView::PartsTableView(const Size& size)
-: _tableView(nullptr)
-, _onSelected(nullptr)
-, _tableViewContentSize(size)
-, _tableViewCellSize(Size(size.width, (size.height / TABLE_CELL_NUM)))
+    : _tableView(nullptr)
+    , _onSelected(nullptr)
+    , _tableViewContentSize(size)
+    , _tableViewCellSize(Size(size.width, (size.height / TABLE_CELL_NUM)))
 {
     // constructor
     TRACE;
@@ -96,9 +96,7 @@ void PartsTableView::onExitTransitionDidStart()
 void PartsTableView::initUI()
 {
     this->setContentSize(MAIN_VIEW_SIZE);
-    this->setBackGroundColorType(Layout::BackGroundColorType::SOLID);
-    this->setBackGroundColor(Color3B::WHITE);
-    
+
     _tableView = TableView::create(this, _tableViewContentSize);
     _tableView->setDelegate(this);
     _tableView->setDirection(TableView::Direction::VERTICAL);
@@ -112,7 +110,7 @@ void PartsTableView::initUI()
 void PartsTableView::setRankInfoDTOList(const std::vector<RankInfoDTO>& list)
 {
     _rankInfoDTOList = list;
-    
+
     if (_tableView)
     {
         // reloadDataを呼ぶと、TableView先頭セル（idx=0）から順に画面内に収まるセルの数だけセルが生成される
@@ -125,7 +123,7 @@ Size PartsTableView::tableCellSizeForIndex(TableView* table, ssize_t idx)
 {
     // このメソッドはTableViewから呼ばれる
     // このメソッドでidx番目のセルのコンテンツサイズ（縦横幅）を返す
-    
+
     if (_rankInfoDTOList.empty())
     {
         return Size::ZERO;
@@ -138,7 +136,7 @@ TableViewCell* PartsTableView::tableCellAtIndex(TableView* table, ssize_t idx)
 {
     // このメソッドはTableViewから呼ばれる
     // このメソッドでセルを生成して返す
-    
+
     TableViewCell* cell;
     {
         // 再利用出来る（生成済み）セルを取得
@@ -155,16 +153,16 @@ TableViewCell* PartsTableView::tableCellAtIndex(TableView* table, ssize_t idx)
             cell->autorelease();
         }
     }
-    
+
     auto info = _rankInfoDTOList.at(idx);
-    
+
     cell->setTag(info.idx);
-    
+
     // 実際に表示させたいパーツを生成してセルにaddChild
     auto panel = PartsTableViewCell::create();
     panel->initWithViewCellInfo(info.idx, Size(_tableViewCellSize.width, _tableViewCellSize.height), info.title);
     cell->addChild(panel);
-    
+
     return cell;
 }
 
@@ -180,7 +178,7 @@ void PartsTableView::tableCellTouched(TableView* table, TableViewCell* cell)
 {
     // このメソッドはTableViewから呼ばれる
     // TableViewの各セルをタップしたときにTableViewから呼ばれる
-    
+
     if (_onSelected)
     {
         // TableViewのセルをタップされたことをTableView生成元にコールバック
