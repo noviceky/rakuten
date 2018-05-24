@@ -57,6 +57,7 @@ private:
 private:
     TableView*             _tableView;
     Size                   _tableViewContentSize;
+    Size                    _tableViewCellSize; //幅は_tableViewContentSizeと同じ
     std::vector<RankInfoDTO> _rankInfoDTOList;
 };
 

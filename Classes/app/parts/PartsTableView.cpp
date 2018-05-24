@@ -10,6 +10,11 @@
 #include "PartsTableViewCell.hpp"
 #include "const.h"
 
+namespace
+{
+    const int TABLE_CELL_NUM = 10; //画面に幾つCell表示させるか Cellの高さにも影響
+}  // namespace
+
 PartsTableView* PartsTableView::create(const Size& size)
 {
     auto instance = new PartsTableView(size);
@@ -31,6 +36,7 @@ PartsTableView::PartsTableView()
 : _tableView(nullptr)
 , _onSelected(nullptr)
 , _tableViewContentSize(Size::ZERO)
+, _tableViewCellSize(Size::ZERO)
 {
     // constructor
     TRACE;
@@ -40,6 +46,7 @@ PartsTableView::PartsTableView(const Size& size)
 : _tableView(nullptr)
 , _onSelected(nullptr)
 , _tableViewContentSize(size)
+, _tableViewCellSize(Size(size.width, (size.height / TABLE_CELL_NUM)))
 {
     // constructor
     TRACE;
@@ -123,8 +130,8 @@ Size PartsTableView::tableCellSizeForIndex(TableView* table, ssize_t idx)
     {
         return Size::ZERO;
     }
-    //TODO 高さどうするか
-    return Size(_tableViewContentSize.width, _rankInfoDTOList.at(idx).listItemHeight);
+    //
+    return Size(_tableViewCellSize.width, _tableViewCellSize.height);
 }
 
 TableViewCell* PartsTableView::tableCellAtIndex(TableView* table, ssize_t idx)
@@ -155,7 +162,7 @@ TableViewCell* PartsTableView::tableCellAtIndex(TableView* table, ssize_t idx)
     
     // 実際に表示させたいパーツを生成してセルにaddChild
     auto panel = PartsTableViewCell::create();
-    panel->initWithViewCellInfo(info.idx, Size(_tableViewContentSize.width, info.listItemHeight), info.title);
+    panel->initWithViewCellInfo(info.idx, Size(_tableViewCellSize.width, _tableViewCellSize.height), info.title);
     cell->addChild(panel);
     
     return cell;

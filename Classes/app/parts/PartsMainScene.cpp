@@ -7,6 +7,8 @@
 
 #include "PartsMainScene.hpp"
 #include "AppMacro.h"
+#include "RakutenService.hpp"
+#include "PartsTableView.hpp"
 
 namespace
 {
@@ -19,6 +21,7 @@ const char* BUTTON_LIST_NAME     = "btn_list";
 const char* BUTTON_MODULE_NAME   = "btn_module";
 const char* BUTTON_ARRAY_NAME    = "btn_array";
 const char* BUTTON_SETTING_NAME  = "btn_setting";
+const Size kTableViewContentSize = MAIN_VIEW_SIZE - Size(20.f, 300.f);
 }  // namespace
 
 PartsMainScene::PartsMainScene()
@@ -86,9 +89,6 @@ void PartsMainScene::initUI()
     _csbHeader = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_HEADER_NAME);
     _csbFooter = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_FOOTER_NAME);
 
-    this->addChild(_csbHeader);
-    this->addChild(_csbFooter);
-
     _csbHeader->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     _csbFooter->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     _csbHeader->setPosition(Size(0, MAIN_VIEW_HEIGHT));
@@ -101,6 +101,19 @@ void PartsMainScene::initUI()
     listenFooterModule();
     listenFooterArray();
     listenFooterSetting();
+    
+    //TableViewの配置
+    auto ui = PartsTableView::create(kTableViewContentSize);
+    ui->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    ui->setPosition(MAIN_VIEW_SIZE / 2);
+    ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
+    this->addChild(ui);
+    
+    auto RankInfoDTOList = RakutenService::getInstance()->getRankInfoDTOList();
+    ui->setRankInfoDTOList(RankInfoDTOList);
+    
+    this->addChild(_csbHeader);
+    this->addChild(_csbFooter);
 }
 
 /**

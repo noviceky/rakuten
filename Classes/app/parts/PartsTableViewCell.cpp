@@ -14,37 +14,37 @@ namespace
     const float kFontSize = 24;
 }  // namespace
 
-PartsSampleTableViewCell::PartsSampleTableViewCell()
+PartsTableViewCell::PartsTableViewCell()
 {
     // constructor
     TRACE;
 }
 
-PartsSampleTableViewCell::~PartsSampleTableViewCell()
+PartsTableViewCell::~PartsTableViewCell()
 {
     // destructor
     TRACE;
 }
 
-bool PartsSampleTableViewCell::init()
+bool PartsTableViewCell::init()
 {
     TRACE;
     return Layout::init();
 }
 
-void PartsSampleTableViewCell::onEnter()
+void PartsTableViewCell::onEnter()
 {
     TRACE;
     Layout::onEnter();
 }
 
-void PartsSampleTableViewCell::onEnterTransitionDidFinish()
+void PartsTableViewCell::onEnterTransitionDidFinish()
 {
     TRACE;
     Layout::onEnterTransitionDidFinish();
 }
 
-void PartsSampleTableViewCell::onExit()
+void PartsTableViewCell::onExit()
 {
     TRACE;
     Layout::onExit();
@@ -52,13 +52,13 @@ void PartsSampleTableViewCell::onExit()
     this->unscheduleUpdate();
 }
 
-void PartsSampleTableViewCell::onExitTransitionDidStart()
+void PartsTableViewCell::onExitTransitionDidStart()
 {
     TRACE;
     Layout::onExitTransitionDidStart();
 }
 
-void PartsSampleTableViewCell::initWithViewCellInfo(const int idx, const Size& size, const std::string& title)
+void PartsTableViewCell::initWithViewCellInfo(const int idx, const Size& size, const std::string& title)
 {
     // 背景サイズ設定
     this->setContentSize(size);
