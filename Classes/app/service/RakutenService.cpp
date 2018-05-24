@@ -40,17 +40,17 @@ const std::vector<RankInfoDTO> RakutenService::getSampleListInfo()
         std::uniform_real_distribution<float> randFactor(std::min<float>(min, max), std::max<float>(min, max));
         return randFactor(mt);
     };
-    
+
     std::vector<RankInfoDTO> list;
-    
+
     for (int i = 1; i <= 30; ++i)
     {
         RankInfoDTO dto;
-        dto.idx            = i;
-        dto.rank = getRandomReal(1, 30);
-        dto.title          = cocos2d::StringUtils::format("idx[%d] rank[%d]", dto.idx, dto.rank);
+        dto.idx   = i;
+        dto.rank  = getRandomReal(1, 30);
+        dto.title = cocos2d::StringUtils::format("idx[%d] rank[%d]", dto.idx, dto.rank);
         list.push_back(dto);
     }
-    
+
     return list;
 }

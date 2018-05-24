@@ -8,8 +8,8 @@
 #ifndef __rakuran__RakutenService__
 #define __rakuran__RakutenService__
 
-#include "cocos2d.h"
 #include "RankInfoDTO.h"
+#include "cocos2d.h"
 
 using namespace cocos2d;
 
@@ -23,7 +23,7 @@ class RakutenService
     static RakutenService* getInstance();
     static void            destroy();
     static RakutenService* _instance;
-    
+
     const std::vector<RankInfoDTO> getSampleListInfo();
 
   private:
