@@ -20,7 +20,7 @@ class PartsTableViewCell : public Layout
   public:
     CREATE_FUNC(PartsTableViewCell);
 
-    void initWithViewCellInfo(const int idx, const Size& size, const std::string& title);
+    void initWithViewCellInfo(const int idx, const Size& size, const int rank, const std::string& title);
 
   private:
     PartsTableViewCell();
@@ -30,6 +30,7 @@ class PartsTableViewCell : public Layout
     virtual void onEnterTransitionDidFinish() override;
     virtual void onExit() override;
     virtual void onExitTransitionDidStart() override;
+    Node*        _csbItem;
 };
 
 #endif /* defined(__rakuran__PartsTableViewCell__) */

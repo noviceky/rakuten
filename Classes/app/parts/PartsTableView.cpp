@@ -160,7 +160,8 @@ TableViewCell* PartsTableView::tableCellAtIndex(TableView* table, ssize_t idx)
 
     // 実際に表示させたいパーツを生成してセルにaddChild
     auto panel = PartsTableViewCell::create();
-    panel->initWithViewCellInfo(info.idx, Size(_tableViewCellSize.width, _tableViewCellSize.height), info.title);
+    panel->initWithViewCellInfo(
+        info.idx, Size(_tableViewCellSize.width, _tableViewCellSize.height), info.rank, info.title);
     cell->addChild(panel);
 
     return cell;
