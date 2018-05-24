@@ -31,7 +31,7 @@ void RakutenService::destroy()
  * TODO
  * 一旦ダミー実装
  */
-const std::vector<RankInfoDTO> RakutenService::getSampleListInfo()
+const std::vector<RankInfoDTO> RakutenService::getListRankInfoDTO()
 {
     // min,maxの範囲の乱数を取得するラムダ
     auto getRandomReal = [](const float min, const float max) {
