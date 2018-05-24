@@ -39,6 +39,8 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8A56099620AE7A0900102DEA /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A56099420AE7A0900102DEA /* MainScene.cpp */; };
 		8ADF082A20AD81FB0086B847 /* PartsMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */; };
+		8AE7BB1320B6718700013E45 /* PartsTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7BB1120B6718700013E45 /* PartsTableView.cpp */; };
+		8AE7BB1820B6791E00013E45 /* PartsTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7BB1620B6791E00013E45 /* PartsTableViewCell.cpp */; };
 		8AEB072620B563F000D8F7BB /* RakutenService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB072420B563F000D8F7BB /* RakutenService.cpp */; };
 		B311F39D2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B311F39B2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp */; };
 		B33A2655204700DD00AB4E69 /* PartsSampleTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33A2651204700DC00AB4E69 /* PartsSampleTableView.cpp */; };
@@ -140,6 +142,10 @@
 		8A56099520AE7A0900102DEA /* MainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainScene.hpp; sourceTree = "<group>"; };
 		8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartsMainScene.cpp; sourceTree = "<group>"; };
 		8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsMainScene.hpp; sourceTree = "<group>"; };
+		8AE7BB1120B6718700013E45 /* PartsTableView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartsTableView.cpp; sourceTree = "<group>"; };
+		8AE7BB1220B6718700013E45 /* PartsTableView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsTableView.hpp; sourceTree = "<group>"; };
+		8AE7BB1620B6791E00013E45 /* PartsTableViewCell.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartsTableViewCell.cpp; sourceTree = "<group>"; };
+		8AE7BB1720B6791E00013E45 /* PartsTableViewCell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PartsTableViewCell.hpp; sourceTree = "<group>"; };
 		8AEB072420B563F000D8F7BB /* RakutenService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RakutenService.cpp; sourceTree = "<group>"; };
 		8AEB072520B563F000D8F7BB /* RakutenService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RakutenService.hpp; sourceTree = "<group>"; };
 		8AEB073120B5775500D8F7BB /* RankInfoDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankInfoDTO.h; sourceTree = "<group>"; };
@@ -274,6 +280,10 @@
 				32B5CA2A20527F8C00E9ADCA /* PartsLoadingScene.hpp */,
 				8ADF082820AD81FB0086B847 /* PartsMainScene.cpp */,
 				8ADF082920AD81FB0086B847 /* PartsMainScene.hpp */,
+				8AE7BB1120B6718700013E45 /* PartsTableView.cpp */,
+				8AE7BB1220B6718700013E45 /* PartsTableView.hpp */,
+				8AE7BB1620B6791E00013E45 /* PartsTableViewCell.cpp */,
+				8AE7BB1720B6791E00013E45 /* PartsTableViewCell.hpp */,
 			);
 			path = parts;
 			sourceTree = "<group>";
@@ -558,11 +568,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE7BB1320B6718700013E45 /* PartsTableView.cpp in Sources */,
 				32B5CA2B20527F8C00E9ADCA /* PartsLoadingScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B33A2655204700DD00AB4E69 /* PartsSampleTableView.cpp in Sources */,
 				B33A2656204700DD00AB4E69 /* PartsSampleTableViewCell.cpp in Sources */,
 				B311F39D2045C51200F8CB72 /* PartsSampleDebugMenuList.cpp in Sources */,
+				8AE7BB1820B6791E00013E45 /* PartsTableViewCell.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				32E4109B204D3EAB00ADAC45 /* SampleService.cpp in Sources */,
 				8ADF082A20AD81FB0086B847 /* PartsMainScene.cpp in Sources */,
