@@ -26,3 +26,31 @@ RakutenService* RakutenService::getInstance()
 void RakutenService::destroy()
 {
 }
+
+/**
+ * TODO
+ * 一旦ダミー実装
+ */
+const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
+{
+    // min,maxの範囲の乱数を取得するラムダ
+    auto getRandomReal = [](const float min, const float max) {
+        std::random_device rnd;        // 非決定的な乱数生成器でシード生成機を生成
+        std::mt19937       mt(rnd());  //  メルセンヌツイスターの32ビット版、引数は初期シード
+        std::uniform_real_distribution<float> randFactor(std::min<float>(min, max), std::max<float>(min, max));
+        return randFactor(mt);
+    };
+
+    std::vector<RankInfoDTO> list;
+
+    for (int i = 1; i <= 30; ++i)
+    {
+        RankInfoDTO dto;
+        dto.idx   = i;
+        dto.rank  = getRandomReal(1, 30);
+        dto.title = cocos2d::StringUtils::format("idx[%d] rank[%d]", dto.idx, dto.rank);
+        list.push_back(dto);
+    }
+
+    return list;
+}
