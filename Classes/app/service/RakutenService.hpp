@@ -24,7 +24,7 @@ class RakutenService
     static void            destroy();
     static RakutenService* _instance;
 
-    const std::vector<RankInfoDTO> getListRankInfoDTO();
+    const std::vector<RankInfoDTO> getRankInfoDTOList();
 
   private:
     RakutenService();
