@@ -79,6 +79,7 @@ void PartsTableViewCell::initWithViewCellInfo(const int idx, const Size& size, c
 
     rankText->setString(std::to_string(rank));
     titleText->setString(title);
+    panel->setTouchEnabled(false);
 
     this->addChild(_csbItem);
 }
