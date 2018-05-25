@@ -88,7 +88,7 @@ void PartsMainScene::update(float delta)
 void PartsMainScene::initUI()
 {
     TRACE;
-    // csbファイルのロード処理
+    // ヘッダ/フッタcsbファイルのロード処理
     _csbHeader = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_HEADER_NAME);
     _csbFooter = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_FOOTER_NAME);
 

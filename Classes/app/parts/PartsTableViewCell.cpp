@@ -12,7 +12,7 @@
 
 namespace
 {
-const float kFontSize         = 24;
+const float kFontSize         = 24;  //テキスト部分のフォントサイズ
 const char* CSB_ITEM_NAME     = "list_item_s.csb";
 const char* LAYOUT_PANEL_NAME = "panel";
 const char* TEXT_RANK_NAME    = "rank";
@@ -64,13 +64,14 @@ void PartsTableViewCell::onExitTransitionDidStart()
     Layout::onExitTransitionDidStart();
 }
 
-void PartsTableViewCell::initWithViewCellInfo(const int idx, const Size& size, const int rank, const std::string& title)
+void PartsTableViewCell::initWithViewCellInfo(
+    const int idx, const Size& cellSize, const int rank, const std::string& title)
 {
     // csbファイルのロード処理
     _csbItem = CSLoader::getInstance()->createNodeWithFlatBuffersFile(CSB_ITEM_NAME);
     _csbItem->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     // 背景サイズ設定
-    this->setContentSize(size);
+    this->setContentSize(cellSize);
 
     // タイトル文言設定 labelだがText*型
     auto panel     = _csbItem->getChildByName<Layout*>(LAYOUT_PANEL_NAME);
@@ -79,6 +80,7 @@ void PartsTableViewCell::initWithViewCellInfo(const int idx, const Size& size, c
 
     rankText->setString(std::to_string(rank));
     titleText->setString(title);
+    titleText->setFontSize(kFontSize);
     panel->setTouchEnabled(false);
 
     this->addChild(_csbItem);
