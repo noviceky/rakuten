@@ -118,12 +118,12 @@ void PartsMainScene::initUI()
     ui->setRankInfoDTOList(RankInfoDTOList);
 
     //背景の配置
-    Sprite* _bgImage = Sprite::create(BG_IMAGE_NAME);
-    _bgImage->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    Sprite* bgImage = Sprite::create(BG_IMAGE_NAME);
+    bgImage->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 
     // thisのコンテンツサイズを_MAIN_VIEW_SIZEに合わせる
     this->setContentSize(MAIN_VIEW_SIZE);
-    this->addChild(_bgImage);
+    this->addChild(bgImage);
     this->addChild(ui);
     this->addChild(_csbHeader);
     this->addChild(_csbFooter);
