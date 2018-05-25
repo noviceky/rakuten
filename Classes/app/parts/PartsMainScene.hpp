@@ -41,9 +41,11 @@ class PartsMainScene : public Node
     void listenFooterArray();
     void listenFooterSetting();
 
-    Node *  _csbHeader, *_csbFooter;
-    Sprite* _backGroundJPG;
-    float   _tableMarginTop, _tableMarginBottom;  //TableViewと画面全体との余白サイズ
+    Node* _csbHeader;
+    Node* _csbFooter;
+
+    float _tableMarginTop;     //TableViewと画面全体上部との余白サイズ
+    float _tableMarginBottom;  //TableViewと画面全体下部との余白サイズ
 };
 
 #endif /* defined(__rakuran__PartsMainScene__) */

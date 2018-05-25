@@ -16,7 +16,7 @@ namespace
 
 const char* CSB_HEADER_NAME      = "header.csb";
 const char* CSB_FOOTER_NAME      = "footer.csb";
-const char* JPG_BACKGROUND_NAME  = "bg_pink.jpg";
+const char* BG_IMAGE_NAME        = "bg_pink.jpg";
 const char* BUTTON_HEADLINE_NAME = "btn_headline";
 const char* BUTTON_LIST_NAME     = "btn_list";
 const char* BUTTON_MODULE_NAME   = "btn_module";
@@ -27,7 +27,6 @@ const char* BUTTON_SETTING_NAME  = "btn_setting";
 PartsMainScene::PartsMainScene()
     : _csbHeader(nullptr)
     , _csbFooter(nullptr)
-    , _backGroundJPG(nullptr)
     , _tableMarginTop(0)
     , _tableMarginBottom(0)
 {
@@ -119,12 +118,12 @@ void PartsMainScene::initUI()
     ui->setRankInfoDTOList(RankInfoDTOList);
 
     //背景の配置
-    _backGroundJPG = Sprite::create(JPG_BACKGROUND_NAME);
-    _backGroundJPG->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    Sprite* _bgImage = Sprite::create(BG_IMAGE_NAME);
+    _bgImage->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 
     // thisのコンテンツサイズを_MAIN_VIEW_SIZEに合わせる
     this->setContentSize(MAIN_VIEW_SIZE);
-    this->addChild(_backGroundJPG);
+    this->addChild(_bgImage);
     this->addChild(ui);
     this->addChild(_csbHeader);
     this->addChild(_csbFooter);
