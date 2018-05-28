@@ -8,13 +8,12 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
-#include "picojson.h"
-
 namespace
 {
 const char* ID_FILE_NAME = "id.txt";
 std::string API_RANKING_URL =
     "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?format=json&applicationId=";
+const int BUFFER_LOG_SIZE = 10;  //ログ出力で重くなるので、一時的に制限
 }  // namespace
 
 RakutenService* RakutenService::_instance = nullptr;
@@ -62,9 +61,10 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
         if (response->isSucceed())
         {
             std::vector<char>* buffer = response->getResponseData();
-            for (int i = 0; i < buffer->size(); i++)
+
+            for (int i = 0; i < BUFFER_LOG_SIZE; i++)
             {
-                LOG("rakutenJSON = %s", &(*buffer)[i]);
+                LOG("rakutenJSON [%d] = %s", i, &(*buffer)[i]);
             }
         }
     });
