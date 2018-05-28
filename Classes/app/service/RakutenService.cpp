@@ -8,14 +8,24 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
+namespace
+{
+const char* ID_FILE_NAME = "id.txt";
+}  // namespace
+
 RakutenService* RakutenService::_instance = nullptr;
 
 RakutenService::RakutenService()
+    : _rakutenAppID(nullptr)
 {
+    // constructor
+    TRACE;
+    loadRakutenAppID();
 }
 
 RakutenService* RakutenService::getInstance()
 {
+    TRACE;
     if (NULL == _instance)
     {
         _instance = new RakutenService();
@@ -25,6 +35,7 @@ RakutenService* RakutenService::getInstance()
 
 void RakutenService::destroy()
 {
+    TRACE;
 }
 
 /**
@@ -33,6 +44,7 @@ void RakutenService::destroy()
  */
 const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
 {
+    TRACE;
     // min,maxの範囲の乱数を取得するラムダ
     auto getRandomReal = [](const float min, const float max) {
         std::random_device rnd;        // 非決定的な乱数生成器でシード生成機を生成
@@ -53,4 +65,13 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
     }
 
     return list;
+}
+
+void RakutenService::loadRakutenAppID()
+{
+    TRACE;
+    FileUtils* fileUtils = FileUtils::getInstance();
+    auto       filePath  = fileUtils->fullPathForFilename(ID_FILE_NAME);
+    _rakutenAppID        = fileUtils->getStringFromFile(filePath).c_str();
+    LOG("_rakutenAppID = %s", _rakutenAppID);
 }

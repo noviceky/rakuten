@@ -25,10 +25,12 @@ class RakutenService
     static RakutenService* _instance;
 
     const std::vector<RankInfoDTO> getRankInfoDTOList();
+    void                           loadRakutenAppID();
 
   private:
     RakutenService();
     virtual ~RakutenService(){};
+    const char* _rakutenAppID;
 };
 
 #endif /* defined(__rakuran__RakutenService__) */
