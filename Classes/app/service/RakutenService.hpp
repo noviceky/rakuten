@@ -27,7 +27,6 @@ class RakutenService
 
     const std::vector<RankInfoDTO> getRankInfoDTOList();
     void                           loadRakutenAppID();
-    void                           rakutenAPIRequest();
 
   private:
     RakutenService();

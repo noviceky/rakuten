@@ -62,7 +62,10 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
         if (response->isSucceed())
         {
             std::vector<char>* buffer = response->getResponseData();
-            LOG("rakutenJSON = %s", &(*buffer)[0]);
+            for (int i = 0; i < buffer->size(); i++)
+            {
+                LOG("rakutenJSON = %s", &(*buffer)[i]);
+            }
         }
     });
 
