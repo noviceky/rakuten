@@ -8,6 +8,8 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
+#include "picojson.h"
+
 namespace
 {
 const char* ID_FILE_NAME = "id.txt";
@@ -61,6 +63,48 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
         dto.idx   = i;
         dto.rank  = getRandomReal(1, 30);
         dto.title = cocos2d::StringUtils::format("idx[%d] rank[%d]", dto.idx, dto.rank);
+        list.push_back(dto);
+    }
+
+    return list;
+}
+
+const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOListFromJSON()
+{
+    std::vector<RankInfoDTO> list;
+
+    // sample.jsonファイル読み出し
+    auto        data = FileUtils::getInstance()->getDataFromFile("sample.json");
+    const char* json = (const char*)(data.getBytes());
+    ssize_t     size = data.getSize();
+
+    picojson::value v;
+    std::string     err;
+
+    // picojsonでパース
+    picojson::parse(v, json, json + size, &err);
+
+    if (!err.empty())
+    {
+        // パース失敗した場合は、空リストデータを返す
+        return list;
+    }
+
+    // ルート階層のオブジェクトを取得
+    picojson::object& root = v.get<picojson::object>();
+
+    picojson::array& array = root["array"].get<picojson::array>();
+
+    for (auto o : array)
+    {
+        picojson::object& info = o.get<picojson::object>();
+        picojson::object& data = info["data"].get<picojson::object>();
+
+        RankInfoDTO dto;
+        dto.idx   = static_cast<int>(info["idx"].get<double>());
+        dto.rank  = static_cast<float>(data["listItemHeight"].get<double>());
+        dto.title = data["title"].get<std::string>();
+
         list.push_back(dto);
     }
 
