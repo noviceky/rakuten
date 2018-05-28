@@ -10,6 +10,7 @@
 
 #include "RankInfoDTO.h"
 #include "cocos2d.h"
+#include "network/HttpClient.h"
 
 using namespace cocos2d;
 
@@ -27,6 +28,7 @@ class RakutenService
     const std::vector<RankInfoDTO> getRankInfoDTOList();
     const std::vector<RankInfoDTO> getRankInfoDTOListFromJSON();
     void                           loadRakutenAppID();
+    void                            rakutenAPIRequest();
 
   private:
     RakutenService();

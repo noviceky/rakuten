@@ -111,6 +111,49 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOListFromJSON()
     return list;
 }
 
+void RakutenService::rakutenAPIRequest()
+{
+    auto request = new HttpRequest();
+    std::string url = "https://qiita-image-store.s3.amazonaws.com/0/7063/2903f4b7-a428-2105-574e-f6f6b0e041db.jpeg";
+    request->setUrl(url.c_str());
+    request->setRequestType(HttpRequest::Type::GET);
+    request->setResponseCallback([this](HttpClient* client, HttpResponse* response){
+        
+        log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
+        
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        auto fileUtils = FileUtils::getInstance();
+        std::string filename = fileUtils->getWritablePath() + "hoge.jpg";
+        
+        if (fileUtils->isFileExist(filename)) {
+            
+            auto sprite = Sprite::create(filename.c_str());
+            sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+            this->addChild(sprite, 0);
+            
+        } else if (response->isSucceed()) {
+            
+            std::vector<char>* buffer = response->getResponseData();
+            auto* img = new Image();
+            img->initWithImageData(reinterpret_cast<unsigned char*>(&(buffer->front())), buffer->size());
+            img->saveToFile(filename.c_str());
+            auto* texture = new Texture2D();
+            texture->initWithImage(img);
+            auto sprite = Sprite::createWithTexture(texture);
+            sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+            this->addChild(sprite, 0);
+            
+        }
+        
+    });
+    
+    auto client = HttpClient::getInstance();
+    client->enableCookies(NULL);
+    client->send(request);
+}
+
 void RakutenService::loadRakutenAppID()
 {
     TRACE;
