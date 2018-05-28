@@ -20,7 +20,7 @@ RakutenService::RakutenService()
 {
     // constructor
     TRACE;
-    roadRakutenAppID();
+    loadRakutenAppID();
 }
 
 RakutenService* RakutenService::getInstance()
