@@ -67,7 +67,7 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
     return list;
 }
 
-void RakutenService::roadRakutenAppID()
+void RakutenService::loadRakutenAppID()
 {
     TRACE;
     FileUtils* fileUtils = FileUtils::getInstance();
