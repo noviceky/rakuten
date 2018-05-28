@@ -8,9 +8,12 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
+using namespace cocos2d::network;
 namespace
 {
 const char* ID_FILE_NAME = "id.txt";
+std::string API_RANKING_URL =
+    "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?format=json&applicationId=";
 }  // namespace
 
 RakutenService* RakutenService::_instance = nullptr;
@@ -39,30 +42,31 @@ void RakutenService::destroy()
 }
 
 /**
- * TODO
- * 一旦ダミー実装
+ *
+ * 楽天ランキング情報リスト取得
  */
-const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
+const std::vector<RankInfoDTO> RakutenService::requestGetRakutenRanking()
 {
     TRACE;
-    // min,maxの範囲の乱数を取得するラムダ
-    auto getRandomReal = [](const float min, const float max) {
-        std::random_device rnd;        // 非決定的な乱数生成器でシード生成機を生成
-        std::mt19937       mt(rnd());  //  メルセンヌツイスターの32ビット版、引数は初期シード
-        std::uniform_real_distribution<float> randFactor(std::min<float>(min, max), std::max<float>(min, max));
-        return randFactor(mt);
-    };
-
     std::vector<RankInfoDTO> list;
 
-    for (int i = 1; i <= 30; ++i)
-    {
-        RankInfoDTO dto;
-        dto.idx   = i;
-        dto.rank  = getRandomReal(1, 30);
-        dto.title = cocos2d::StringUtils::format("idx[%d] rank[%d]", dto.idx, dto.rank);
-        list.push_back(dto);
-    }
+    auto        request = new HttpRequest();
+    std::string url     = API_RANKING_URL + _rakutenAppID;
+    request->setUrl(url.c_str());
+    request->setRequestType(HttpRequest::Type::GET);
+    request->setResponseCallback([this](HttpClient* client, HttpResponse* response) {
+        log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
+
+        if (response->isSucceed())
+        {
+            const char* json = &(*response->getResponseData())[0];
+            LOG("json=%s",json);
+        }
+    });
+
+    auto client = HttpClient::getInstance();
+    client->enableCookies(nullptr);
+    client->send(request);
 
     return list;
 }

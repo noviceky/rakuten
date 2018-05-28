@@ -114,7 +114,7 @@ void PartsMainScene::initUI()
     ui->setPosition(MAIN_VIEW_SIZE / 2);
     ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
 
-    auto RankInfoDTOList = RakutenService::getInstance()->getRankInfoDTOList();
+    auto RankInfoDTOList = RakutenService::getInstance()->requestGetRakutenRanking();
     ui->setRankInfoDTOList(RankInfoDTOList);
 
     //背景の配置
