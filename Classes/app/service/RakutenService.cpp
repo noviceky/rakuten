@@ -8,12 +8,12 @@
 #include "RakutenService.hpp"
 #include "AppMacro.h"
 
+using namespace cocos2d::network;
 namespace
 {
 const char* ID_FILE_NAME = "id.txt";
 std::string API_RANKING_URL =
     "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?format=json&applicationId=";
-const int BUFFER_LOG_SIZE = 10;  //ログ出力で重くなるので、一時的に制限
 }  // namespace
 
 RakutenService* RakutenService::_instance = nullptr;
@@ -42,13 +42,12 @@ void RakutenService::destroy()
 }
 
 /**
- * TODO
- * 楽天APIを用いてdtoにデータ入れる
+ *
+ * 楽天ランキング情報リスト取得
  */
-const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
+const std::vector<RankInfoDTO> RakutenService::requestGetRakutenRanking()
 {
     TRACE;
-    using namespace cocos2d::network;
     std::vector<RankInfoDTO> list;
 
     auto        request = new HttpRequest();
@@ -60,12 +59,8 @@ const std::vector<RankInfoDTO> RakutenService::getRankInfoDTOList()
 
         if (response->isSucceed())
         {
-            std::vector<char>* buffer = response->getResponseData();
-
-            for (int i = 0; i < BUFFER_LOG_SIZE; i++)
-            {
-                LOG("rakutenJSON [%d] = %s", i, &(*buffer)[i]);
-            }
+            const char* json = &(*response->getResponseData())[0];
+            LOG("json=%s",json);
         }
     });
 
