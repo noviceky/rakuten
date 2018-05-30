@@ -50,8 +50,8 @@ void RakutenService::requestGetRakutenRanking(dtoCallback callback)
 {
     TRACE;
     std::vector<RankInfoDTO> list;
-    auto        request = new HttpRequest();
-    std::string url     = API_RANKING_URL + _rakutenAppID;
+    auto                     request = new HttpRequest();
+    std::string              url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
     request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
@@ -66,7 +66,6 @@ void RakutenService::requestGetRakutenRanking(dtoCallback callback)
     auto client = HttpClient::getInstance();
     client->enableCookies(nullptr);
     client->send(request);
-
 }
 
 void RakutenService::loadRakutenAppID()

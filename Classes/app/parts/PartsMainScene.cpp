@@ -9,6 +9,8 @@
 #include "AppMacro.h"
 #include "PartsTableView.hpp"
 #include "RakutenService.hpp"
+#include <algorithm>  // std::copy
+#include <iterator>   // std::back_inserter
 
 namespace
 {
@@ -115,8 +117,9 @@ void PartsMainScene::initUI()
     ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
 
     std::vector<RankInfoDTO> RankInfoDTOList;
-    RakutenService::getInstance()->requestGetRakutenRanking([=](RankInfoDTOList){
-        
+    //ここではラムダ式そのものしか渡せない
+    RakutenService::getInstance()->requestGetRakutenRanking([=](std::vector<RankInfoDTO> DTOList) {
+        copy(DTOList.begin(), DTOList.end(), back_inserter(RankInfoDTOList));
     });
     ui->setRankInfoDTOList(RankInfoDTOList);
 
