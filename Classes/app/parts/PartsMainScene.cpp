@@ -118,7 +118,7 @@ void PartsMainScene::initUI()
 
     //ここではラムダ式そのものしか渡せない
     RakutenService::getInstance()->requestGetRakutenRanking(
-        [=](std::vector<RankInfoDTO> DTOList) { ui->setRankInfoDTOList(DTOList); });
+        [=](std::vector<RankInfoDTO> dtoList) { ui->setRankInfoDTOList(dtoList); });
 
     //背景の配置
     Sprite* bgImage = Sprite::create(BG_IMAGE_NAME);

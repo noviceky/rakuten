@@ -46,7 +46,7 @@ void RakutenService::destroy()
  *
  * 楽天ランキング情報リスト取得
  */
-void RakutenService::requestGetRakutenRanking(dtoCallback callback)
+void RakutenService::requestGetRakutenRanking(getRankingResultCallback callback)
 {
     TRACE;
     auto        request = new HttpRequest();

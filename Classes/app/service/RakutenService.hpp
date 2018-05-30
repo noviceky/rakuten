@@ -25,8 +25,8 @@ class RakutenService
     static void            destroy();
     static RakutenService* _instance;
 
-    using dtoCallback = std::function<void(std::vector<RankInfoDTO>&)>;
-    void requestGetRakutenRanking(dtoCallback callback);
+    using getRankingResultCallback = std::function<void(std::vector<RankInfoDTO>&)>;
+    void requestGetRakutenRanking(getRankingResultCallback callback);
     void loadRakutenAppID();
 
   private:
