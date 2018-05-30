@@ -116,14 +116,9 @@ void PartsMainScene::initUI()
     ui->setPosition(MAIN_VIEW_SIZE / 2);
     ui->setOnSelected([=](const int idx) { MessageBox(("idx[" + std::to_string(idx) + "]").c_str(), "onSelected"); });
 
-    std::vector<RankInfoDTO> RankInfoDTOList;
     //ここではラムダ式そのものしか渡せない
-    RakutenService::getInstance()->requestGetRakutenRanking([=](std::vector<RankInfoDTO> DTOList) {
-        copy(DTOList.begin(), DTOList.end(), back_inserter(RankInfoDTOList));
-    });
-    LOG("RankInfoDTOList[%d] rank = [%d],title = %s", RankInfoDTOList[0].idx, RankInfoDTOList[0].rank,
-        RankInfoDTOList[0].title.c_str());
-    ui->setRankInfoDTOList(RankInfoDTOList);
+    RakutenService::getInstance()->requestGetRakutenRanking(
+        [=](std::vector<RankInfoDTO> DTOList) { ui->setRankInfoDTOList(DTOList); });
 
     //背景の配置
     Sprite* bgImage = Sprite::create(BG_IMAGE_NAME);

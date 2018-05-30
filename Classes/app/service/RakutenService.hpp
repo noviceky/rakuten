@@ -32,7 +32,7 @@ class RakutenService
   private:
     RakutenService();
     virtual ~RakutenService(){};
-    const char* _rakutenAppID;
+    std::string _rakutenAppID;
 };
 
 #endif /* defined(__rakuran__RakutenService__) */

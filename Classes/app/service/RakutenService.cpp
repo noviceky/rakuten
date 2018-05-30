@@ -20,7 +20,7 @@ std::string API_RANKING_URL =
 RakutenService* RakutenService::_instance = nullptr;
 
 RakutenService::RakutenService()
-    : _rakutenAppID(nullptr)
+    : _rakutenAppID("")
 {
     // constructor
     TRACE;
@@ -49,16 +49,14 @@ void RakutenService::destroy()
 void RakutenService::requestGetRakutenRanking(dtoCallback callback)
 {
     TRACE;
-    auto                     request = new HttpRequest();
-    std::string              url     = API_RANKING_URL + _rakutenAppID;
+    auto        request = new HttpRequest();
+    std::string url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
     request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
         log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
         if (response->isSucceed())
         {
-            //std::vector<char>* json = response->getResponseData();
-            
             std::vector<RankInfoDTO> list;
             for (int i = 1; i <= 20; ++i)
             {
@@ -82,6 +80,6 @@ void RakutenService::loadRakutenAppID()
     TRACE;
     FileUtils* fileUtils = FileUtils::getInstance();
     auto       filePath  = fileUtils->fullPathForFilename(ID_FILE_NAME);
-    _rakutenAppID        = fileUtils->getStringFromFile(filePath).c_str();
-    LOG("_rakutenAppID = %s", _rakutenAppID);
+    _rakutenAppID        = fileUtils->getStringFromFile(filePath);
+    LOG("_rakutenAppID = %s", _rakutenAppID.c_str());
 }
