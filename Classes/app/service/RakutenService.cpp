@@ -46,39 +46,27 @@ void RakutenService::destroy()
  *
  * 楽天ランキング情報リスト取得
  */
-void RakutenService::requestGetRakutenRanking(std::vector<RankInfoDTO>& list)
+void RakutenService::requestGetRakutenRanking(dtoCallback callback)
 {
     TRACE;
+    std::vector<RankInfoDTO> list;
     auto        request = new HttpRequest();
     std::string url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([this](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
         log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
         if (response->isSucceed())
         {
             std::vector<char>* json = response->getResponseData();
+            callback();
         }
     });
 
     auto client = HttpClient::getInstance();
     client->enableCookies(nullptr);
+    client->send(request);
 
-    //コールバック関数の定義
-    std::function<void(void)> listReturn;
-    listReturn = [&list]() {
-        //TODO listにDTOを入れる
-    };
-
-    //callback
-    auto node = new Node;
-    node->scheduleOnce(
-        [=](float delta) {
-            // ここが3.0f秒後に実行される処理
-            client->send(request);
-            listReturn();
-        },
-        3.0f, "rakuten_callback");
 }
 
 void RakutenService::loadRakutenAppID()
