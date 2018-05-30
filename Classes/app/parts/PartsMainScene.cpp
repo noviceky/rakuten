@@ -121,6 +121,8 @@ void PartsMainScene::initUI()
     RakutenService::getInstance()->requestGetRakutenRanking([=](std::vector<RankInfoDTO> DTOList) {
         copy(DTOList.begin(), DTOList.end(), back_inserter(RankInfoDTOList));
     });
+    LOG("RankInfoDTOList[%d] rank = [%d],title = %s", RankInfoDTOList[0].idx, RankInfoDTOList[0].rank,
+        RankInfoDTOList[0].title.c_str());
     ui->setRankInfoDTOList(RankInfoDTOList);
 
     //背景の配置

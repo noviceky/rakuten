@@ -54,12 +54,21 @@ void RakutenService::requestGetRakutenRanking(dtoCallback callback)
     std::string              url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([&](HttpClient* client, HttpResponse* response) {
         log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
         if (response->isSucceed())
         {
             std::vector<char>* json = response->getResponseData();
-            callback();
+
+            for (int i = 1; i <= 20; ++i)
+            {
+                RankInfoDTO dto;
+                dto.idx   = i;
+                dto.rank  = i + 1;
+                dto.title = cocos2d::StringUtils::format("idx[%d]", dto.idx);
+                list.push_back(dto);
+            }
+            callback(list);
         }
     });
 
