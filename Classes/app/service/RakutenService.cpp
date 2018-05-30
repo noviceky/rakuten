@@ -49,17 +49,17 @@ void RakutenService::destroy()
 void RakutenService::requestGetRakutenRanking(dtoCallback callback)
 {
     TRACE;
-    std::vector<RankInfoDTO> list;
     auto                     request = new HttpRequest();
     std::string              url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([&](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
         log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
         if (response->isSucceed())
         {
-            std::vector<char>* json = response->getResponseData();
-
+            //std::vector<char>* json = response->getResponseData();
+            
+            std::vector<RankInfoDTO> list;
             for (int i = 1; i <= 20; ++i)
             {
                 RankInfoDTO dto;
