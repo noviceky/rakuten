@@ -25,13 +25,14 @@ class RakutenService
     static void            destroy();
     static RakutenService* _instance;
 
-    const std::vector<RankInfoDTO> requestGetRakutenRanking();
-    void                           loadRakutenAppID();
+    using getRankingResultCallback = std::function<void(std::vector<RankInfoDTO>&)>;
+    void requestGetRakutenRanking(getRankingResultCallback callback);
+    void loadRakutenAppID();
 
   private:
     RakutenService();
     virtual ~RakutenService(){};
-    const char* _rakutenAppID;
+    std::string _rakutenAppID;
 };
 
 #endif /* defined(__rakuran__RakutenService__) */

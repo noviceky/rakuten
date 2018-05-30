@@ -7,6 +7,7 @@
 
 #include "RakutenService.hpp"
 #include "AppMacro.h"
+#include "picojson.h"
 
 using namespace cocos2d::network;
 namespace
@@ -19,7 +20,7 @@ std::string API_RANKING_URL =
 RakutenService* RakutenService::_instance = nullptr;
 
 RakutenService::RakutenService()
-    : _rakutenAppID(nullptr)
+    : _rakutenAppID("")
 {
     // constructor
     TRACE;
@@ -45,30 +46,33 @@ void RakutenService::destroy()
  *
  * 楽天ランキング情報リスト取得
  */
-const std::vector<RankInfoDTO> RakutenService::requestGetRakutenRanking()
+void RakutenService::requestGetRakutenRanking(getRankingResultCallback callback)
 {
     TRACE;
-    std::vector<RankInfoDTO> list;
-
     auto        request = new HttpRequest();
     std::string url     = API_RANKING_URL + _rakutenAppID;
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([this](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
         log("responseCode:%ld %s", response->getResponseCode(), response->getHttpRequest()->getUrl());
-
         if (response->isSucceed())
         {
-            const char* json = &(*response->getResponseData())[0];
-            LOG("json=%s",json);
+            std::vector<RankInfoDTO> list;
+            for (int i = 1; i <= 20; ++i)
+            {
+                RankInfoDTO dto;
+                dto.idx   = i;
+                dto.rank  = i + 1;
+                dto.title = cocos2d::StringUtils::format("idx[%d]", dto.idx);
+                list.push_back(dto);
+            }
+            callback(list);
         }
     });
 
     auto client = HttpClient::getInstance();
     client->enableCookies(nullptr);
     client->send(request);
-
-    return list;
 }
 
 void RakutenService::loadRakutenAppID()
@@ -76,6 +80,6 @@ void RakutenService::loadRakutenAppID()
     TRACE;
     FileUtils* fileUtils = FileUtils::getInstance();
     auto       filePath  = fileUtils->fullPathForFilename(ID_FILE_NAME);
-    _rakutenAppID        = fileUtils->getStringFromFile(filePath).c_str();
-    LOG("_rakutenAppID = %s", _rakutenAppID);
+    _rakutenAppID        = fileUtils->getStringFromFile(filePath);
+    LOG("_rakutenAppID = %s", _rakutenAppID.c_str());
 }
